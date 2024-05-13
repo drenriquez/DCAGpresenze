@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <!-- Bootstrap CSS -->
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    .logo{
+      margin-right: 10px;
+    }
+    .navbar-nav {
+    gap: 10px; /* Aggiungi qui lo spazio desiderato tra gli elementi del menu */
+    }
+
+    .navbar-nav .nav-link {
+      transition: background-color 0.3s ease; /* Aggiunto un effetto di transizione sul colore di sfondo */
+    }
+
+    .navbar-nav .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.2); /* Cambiato il colore di sfondo al passaggio del mouse */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Include la tollbar -->
+  <%- include('toolbar') %>
+
+  <!-- Content -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col">
+        <h1><%= title %></h1>
+        <p>Welcome to <%= title %></p>
+        
+        <p>Piattaforma centralizzata per l'archiviazione, l'aggiornamento e l'accesso alle informazioni cliniche e sanitarie del Corpo Nazionale dei Vigili del Fuoco (CNVVF).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include il footer -->
+  <%- include('footer') %>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
