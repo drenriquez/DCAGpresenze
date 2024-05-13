@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+const fs=require('fs');
+const app = require('../app');
+var https = require('https');
+var http = require('http');
+
+var privateKey  = fs.readFileSync('example.com+5-key.pem');
+var certificate = fs.readFileSync('example.com+5.pem');
+
+// var privateKey  = fs.readFileSync('key.pem');
+// var certificate = fs.readFileSync('cert.pem');
+
+var credentials = {key: privateKey, cert: certificate};
+var express = require('express');
+
+
+// your express configuration here
+
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(8080, () =>{
+    console.log("serever is runing at port 8080");
+  });
+httpsServer.listen(443, () =>{
+    console.log("serever is runing at port 443");
+  });
+
+  //openssl req -x509 -newkey rsa:2048 -keyout KEY.key -out CERT.crt -days 365 -nodes -config C:\Users\NTRNRC80S15G273K\Documents\OpenSSL-1.1.1h_win32\OpenSSL-1.1.1h_win32/openssl.cnf
