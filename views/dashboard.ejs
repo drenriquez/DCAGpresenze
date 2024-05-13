@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <!-- Bootstrap CSS -->
+  <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    .logo{
+      margin-right: 10px;
+    }
+    .navbar-nav {
+    gap: 10px; /* Aggiungi qui lo spazio desiderato tra gli elementi del menu */
+    }
+
+    .navbar-nav .nav-link {
+      transition: background-color 0.3s ease; /* Aggiunto un effetto di transizione sul colore di sfondo */
+    }
+
+    .navbar-nav .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.2); /* Cambiato il colore di sfondo al passaggio del mouse */
+    }
+ 
+    
+    /* Stile per le celle non lavorative */
+    .non-lavorativo {
+      background-color: #f2f2f2;
+    }
+    /* Stile per le celle selezionate */
+    .selezionato {
+      background-color: #cce5ff;
+    }
+    .selezionabile {
+      cursor: pointer;
+    }
+ 
+  </style>
+</head>
+<body>
+
+  <!-- Include la tollbar -->
+  <%- include('toolbar') %>
+
+  <!-- Content -->
+  <<div class="container">
+    <h2 class="text-center">Tabella Calendario</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th></th><!-- Prima colonna senza intestazione -->
+          <% for (let i = 1; i <= daysInMonth; i++) { %>
+            <!-- Intestazioni per ogni giorno del mese di maggio 2024 -->
+            <th class="text-center <%= isNonWorkingDay(new Date(2024, 4, i)) ? 'bg-light' : '' %>"><%= i %></th>
+          <% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Righe con intestazioni -->
+        <% for (let row of rows) { %>
+          <tr>
+            <th class="text-center"><%= row.name %></th>
+            <!-- Caselle vuote selezionabili -->
+            <!-- Aggiungi una casella vuota selezionabile per ogni giorno del mese -->
+            <% for (let i = 0; i < daysInMonth; i++) { %>
+              <td class="text-center selezionabile"></td>
+            <% } %>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  
+  
+  <!-- Link a Bootstrap JS e script jQuery (richiesti per il funzionamento di Bootstrap) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  
+
+  <!-- Include il footer -->
+  <%- include('footer') %>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html
