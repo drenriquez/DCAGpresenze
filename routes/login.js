@@ -6,7 +6,7 @@ const authController = require('../controllers/loginController');
 
 /* GET login page. */
 router.get(['/', '/login'], function(req, res, next) {
-  res.render('login', { title: 'ISAmed' });
+  res.render('login', { title: 'DCAGpresenze' });
 });
 
 router.post('/login', authController.login);

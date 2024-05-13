@@ -1,6 +1,6 @@
-
+require('dotenv').config({path:'../.env'});
 module.exports = {
-    dbURI: 'mongodb://localhost:27017/ISAmedDB',
-    dbName: 'ISAmedDB',
+    dbURI: process.env.DB_URI,
+    dbName: process.env.DB_NAME,
   };
   

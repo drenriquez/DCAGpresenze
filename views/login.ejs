@@ -68,7 +68,10 @@
           <form action="/login" method="post">
             <div class="mb-3">
               <label for="username" class="form-label">Username</label>
-              <input type="text" class="form-control" id="username" name="username" required>
+              <div class="input-group">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Inserisci l'username senza '@dipvvf.it'" required>
+                <span class="input-group-text">@dipvvf.it</span>
+              </div>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
