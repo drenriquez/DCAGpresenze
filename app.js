@@ -29,7 +29,8 @@ const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const dashboardRouter = require('./routes/dashboard');
 const app = express();
-
+// Imposta la directory in cui si trova il file monthScroll.js
+const utilsPath = path.join(__dirname, 'utils');
 
 app.use(helmet());
 app.use(cookieParser());
@@ -81,6 +82,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 // Servi i file statici dalla cartella 'node_modules'
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
+//app.use('/utils', express.static(path.join(__dirname, 'utils')));
+// Utilizza il middleware express.static per servire i file statici dalla directory 'utils'
+app.use('/utils', express.static(utilsPath, {
+  setHeaders: (res, filePath) => {
+    if (path.extname(filePath) === '.js') {
+      res.setHeader('Content-Type', 'application/javascript');
+    }
+  }
+}));
 
 app.use(homeRouter);
 app.use(usersRouter);

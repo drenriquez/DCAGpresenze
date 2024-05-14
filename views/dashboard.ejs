@@ -47,8 +47,25 @@
   <!-- Content -->
   <<div class="container">
     <h2 class="text-center">Tabella Calendario</h2>
+
+
+    <!-- Content -->
+    <!-- Content -->
+<div class="container">
+  <h2 class="text-center">
+    <button type="button" class="btn btn-secondary mb-2" id="previousMonth"> < </button>
+    <input type="month" id="monthSelector">
+    <button type="button" class="btn btn-secondary mb-2" id="nextMonth"> > </button>
+  </h2>
+</div>
+
+
+
+
+
+
     <table class="table table-bordered">
-      <thead>
+      <thead >
         <tr>
           <th></th><!-- Prima colonna senza intestazione -->
           <% for (let i = 1; i <= daysInMonth; i++) { %>
@@ -75,9 +92,9 @@
   
   
   <!-- Link a Bootstrap JS e script jQuery (richiesti per il funzionamento di Bootstrap) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
   
   
 
@@ -86,5 +103,7 @@
 
   <!-- Bootstrap Bundle with Popper -->
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/utils/monthScroll.js"></script>
+  </script>
 </body>
-</html
+</html>
