@@ -24,19 +24,55 @@
       background-color: rgba(255, 255, 255, 0.2); /* Cambiato il colore di sfondo al passaggio del mouse */
     }
  
-    
+    .head-day{
+      font-size: small;
+      color: rgb(83, 82, 82)  !important;
+    }
     /* Stile per le celle non lavorative */
+    .head-non-lavorativo {
+      background-color: #fab7b7 !important;
+    }
     .non-lavorativo {
-      background-color: #f2f2f2;
+      background-color: #f8e4e4 !important;
+    }
+    .non-lavorativo-dispari{
+      background-color: #f6dada !important;
     }
     /* Stile per le celle selezionate */
     .selezionato {
       background-color: #cce5ff;
     }
     .selezionabile {
-      cursor: pointer;
+      cursor: pointer !important;
     }
- 
+    .tdLavorativo{
+      background-color: #ffffff !important;
+    }
+    .tdLavorativo:hover {
+      background-color:rgb(228, 250, 242) !important;
+  /* Altri stili desiderati quando il puntatore è sopra l'elemento */
+}
+    /* Nascondi i bordi degli elementi select */
+    .form-control.custom-select {
+            border: none !important;
+            background-color: transparent !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+            margin: none !important;
+            padding: none !important;
+        }
+    td{
+      font-size: 12px;
+      background-color: #ffffff !important;
+      border-color: #d7d1d1;
+    }
+    tr{
+      border-color: #d7d1d1;
+    }
+    .trDispari{
+      background-color: #f9f6f4 !important;
+    }    
   </style>
 </head>
 <body>
@@ -45,7 +81,7 @@
   <%- include('toolbar') %>
 
   <!-- Content -->
-  <<div class="container">
+  <div class="container">
     <h2 class="text-center">Tabella Calendario</h2>
 
 
@@ -66,26 +102,12 @@
 
     <table class="table table-bordered">
       <thead >
-        <tr>
-          <th></th><!-- Prima colonna senza intestazione -->
-          <% for (let i = 1; i <= daysInMonth; i++) { %>
-            <!-- Intestazioni per ogni giorno del mese di maggio 2024 -->
-            <th class="text-center <%= isNonWorkingDay(new Date(2024, 4, i)) ? 'bg-light' : '' %>"><%= i %></th>
-          <% } %>
-        </tr>
+        <tr id="tableHeader">
+      <!-- Intestazioni per ogni giorno del mese - script monthscroll.js-->
       </thead>
-      <tbody>
-        <!-- Righe con intestazioni -->
-        <% for (let row of rows) { %>
-          <tr>
-            <th class="text-center"><%= row.name %></th>
-            <!-- Caselle vuote selezionabili -->
-            <!-- Aggiungi una casella vuota selezionabile per ogni giorno del mese -->
-            <% for (let i = 0; i < daysInMonth; i++) { %>
-              <td class="text-center selezionabile"></td>
-            <% } %>
-          </tr>
-        <% } %>
+      <tbody id="tableBody">
+        <!-- Righe con intestazioni da ciclare -->
+       <!-- parte generata dal codice, le intesazioni delle righe th sono i dipendenti -->
       </tbody>
     </table>
   </div>
@@ -103,7 +125,7 @@
 
   <!-- Bootstrap Bundle with Popper -->
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="/utils/monthScroll.js"></script>
+  <script src="/js/monthScroll.js"></script>
   </script>
 </body>
 </html>

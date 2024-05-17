@@ -7,7 +7,7 @@ const { userAuth } = require('../middleware/userAuth');
 /* GET home page. */
 router.get('/dashboard', userAuth, function(req, res, next) {
   // Calcola o recupera i dati necessari dal backend
-  const daysInMonth = 31; // Numero di giorni nel mese di maggio 2024
+  //const daysInMonth = 3; // Numero di giorni nel mese di maggio 2024
   const isNonWorkingDay = (date) => {
     // Ottieni il giorno della settimana (0 = Domenica, 1 = Lunedì, ..., 6 = Sabato)
     const dayOfWeek = date.getDay();
@@ -22,7 +22,7 @@ router.get('/dashboard', userAuth, function(req, res, next) {
   ]; // Righe con intestazioni
   
   // Passa i dati al template EJS
-  res.render('dashboard', { daysInMonth, isNonWorkingDay, rows });
+  res.render('dashboard', { isNonWorkingDay, rows });
 });
 
 module.exports = router;
