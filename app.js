@@ -79,7 +79,9 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+//app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'utils')));
 // Servi i file statici dalla cartella 'node_modules'
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 //app.use('/utils', express.static(path.join(__dirname, 'utils')));
