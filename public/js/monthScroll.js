@@ -18,7 +18,7 @@ function updateTableHeaders() {
   const rowsHeader = document.getElementById("rowsHeader");
   const tableBody = document.getElementById("tableBody");
   if (!tableHeader) return;
-  const headRows=['riga1', 'riga2', 'riga3','riga4'];
+  const headRows=['riga1', 'riga2', 'riga3','riga4', 'riga5', 'riga6','riga7','riga8', 'riga9','riga10','riga11'];
   const monthSelector = document.getElementById('monthSelector');
   const selectedDate = new Date(monthSelector.value);
   const daysInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();

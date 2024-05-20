@@ -8,17 +8,26 @@
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
+    main{
+     margin-bottom: 100px;
+    }
     .logo{
       margin-right: 10px;
     }
     .navbar-nav {
-    gap: 10px; /* Aggiungi qui lo spazio desiderato tra gli elementi del menu */
+    gap: 10px; /* Aggiungi qui lo spazio desiderato tra gli elementi del menu *
     }
     .navbar-nav .nav-link {
       transition: background-color 0.3s ease; /* Aggiunto un effetto di transizione sul colore di sfondo */
     }
     .navbar-nav .nav-link:hover {
       background-color: rgba(255, 255, 255, 0.2); /* Cambiato il colore di sfondo al passaggio del mouse */
+    }
+    
+    .text-center{
+      font-weight: bold; /* Testo in neretto */
+      color: rgb(83, 82, 82) ;
+      font-style:normal;
     }
     #monthSelector{
       font-weight: bold; /* Testo in neretto */
@@ -99,22 +108,46 @@
       background: rgba(153, 255, 0, 0.158) !important; /* Colore di sfondo con trasparenza */
     background-blend-mode: screen !important; /* Sovrapposizione del colore */
     }
+    .container-select2{
+    
+      position: relative;
+      margin-bottom: 70px;
+      align-items: center;
+    }
+   .select-ufficio{
+    
+    position: absolute;
+    top: 50%;
+    width: 400px;
+       
+   }
   </style>
 </head>
 <body>
+  <main>
   <!-- Include la tollbar -->
   <%- include('toolbar') %>
   <!-- Content -->
-  <div class="container">
+  <div class="container mt-3">
     <h2 class="text-center">PRESENZE</h2>
+
     <!-- Content -->
-<div class="container">
+<div class="container-select">
   <h2 class="text-center">
     <button type="button" class="btn btn-secondary mb-2" id="previousMonth"> < </button>
     <input type="month" id="monthSelector">
     <button type="button" class="btn btn-secondary mb-2" id="nextMonth"> > </button>
   </h2>
+  
 </div>
+<div class="container-select2">
+  <select class="form-select select-ufficio">
+    <option>Uffico I</option>
+    <option>Ufficio II</option>
+    <option>3</option>
+    <option>4</option>
+  </select>
+  </div>  
     <table class="table table-bordered">
       <thead >
         <tr id="tableHeader">
@@ -131,6 +164,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
   <!-- Include il footer -->
+</main>
   <%- include('footer') %>
   <!-- Bootstrap Bundle with Popper -->
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
