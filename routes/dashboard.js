@@ -1,5 +1,5 @@
 
-
+const users=require("../personale.json");
 const express = require('express');
 const router = express.Router();
 const { userAuth } = require('../middleware/userAuth');
@@ -14,15 +14,10 @@ router.get('/dashboard', userAuth, function(req, res, next) {
     // Ritorna true se il giorno della settimana è Sabato (6) o Domenica (0), altrimenti false
     return dayOfWeek === 0 || dayOfWeek === 6;
   };
-  const rows = [
-    { name: 'PRIMARIGA' },
-    { name: 'SECONDARIGA' },
-    { name: 'TERZARIGA' },
-    { name: 'quartaRIGA' }
-  ]; // Righe con intestazioni
+  
   
   // Passa i dati al template EJS
-  res.render('dashboard', { isNonWorkingDay, rows });
+  res.render('dashboard', { usersTable: users });
 });
 
 module.exports = router;

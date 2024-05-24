@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('previousMonth').addEventListener('click', previousMonth);
   document.getElementById('nextMonth').addEventListener('click', nextMonth);
   document.getElementById('monthSelector').addEventListener('change', updateTableHeaders);
+  //const dataString = document.currentScript.getAttribute('usersTable');
+  const usersTableString = document.querySelector('script[type="module"]').getAttribute('usersTable');
+  //console.log(usersTableString);
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
   const currentYear = currentDate.getFullYear();
@@ -14,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function updateTableHeaders() {
+  const usersTableString = document.querySelector('script[type="module"]').getAttribute('usersTable');
+  const usersTable = JSON.parse(usersTableString);
+  //console.log("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",usersTable)
   const tableHeader = document.getElementById('tableHeader');
   const rowsHeader = document.getElementById("rowsHeader");
   const tableBody = document.getElementById("tableBody");
@@ -21,12 +27,19 @@ function updateTableHeaders() {
   const headRows=['riga1', 'riga2', 'riga3','riga4', 'riga5', 'riga6','riga7','riga8', 'riga9','riga10','riga11'];
   const monthSelector = document.getElementById('monthSelector');
   const selectedDate = new Date(monthSelector.value);
+
+  
+  //console.log("TTTTTTTTTTTTTTTTTTTTTTTTt " ,selectedDate)
+  selectedDate.setDate(4);
+  //console.log("Trrrrrrrrrrrrr " ,selectedDate)
+
   const daysInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
   tableHeader.innerHTML = '<tr><th></th>'; // Resetta le intestazioni della tabella
   tableBody.innerHTML = '<tbody id="tableBody"></tbody>'// Resetta le intestazioni delle righe della tabella
   // Aggiunge le intestazioni per ogni giorno del mese
   for (let i = 1; i <= daysInMonth; i++) {
         const dayOfWeek = changeDay(selectedDate, i);
+        //console.log("EEEEEEEEEEEEE",dayOfWeek)
         const giorno = getDayAbbreviation(dayOfWeek.getDay());
         const classOfHeadDay = isNonLavorativo(dayOfWeek) ? "head-non-lavorativo" : "";
         const currentClassDay = isCurrentDay(dayOfWeek) ?  "currentDay" : "";
@@ -34,12 +47,14 @@ function updateTableHeaders() {
     }
         
   // Crea le righe per ogni dipendente
-  for(const[index,headRow ]of headRows.entries()){//entries()  restituisce un nuovo oggetto iterabile, coppie chiave-valore per ogni elemento 
+  usersTable.forEach((persona, index) => {
+      const cognomeNome = `${persona.anagrafica.cognome} ${persona.anagrafica.nome}`;
+ // for(const[index,headRow ]of headRows.entries()){//entries()  restituisce un nuovo oggetto iterabile, coppie chiave-valore per ogni elemento 
       let newTr=document.createElement("tr");
-      newTr.textContent = headRow
+      newTr.textContent = cognomeNome ;
       tableBody.appendChild(newTr)
-      let classTr="none"
-      let classTdnonLAv=""
+      let classTr="none";
+      let classTdnonLAv="";
       if (index % 2 === 0) {
         classTr="trDispari"; // Aggiungi la classe CSS
         classTdnonLAv="non-lavorativo-dispari";
@@ -48,6 +63,7 @@ function updateTableHeaders() {
       for (let i = 1; i <= daysInMonth; i++) {
           let classOfDay="";
           let dayOfWeek2=changeDay(selectedDate, i);
+          //console.log("EEEEEEEEEEEEE",dayOfWeek2)
           if(isNonLavorativo(dayOfWeek2)===1){ 
             const currentClassDay2 = isCurrentDay(dayOfWeek2) ?  "currentDay" : "";         
             newTr.innerHTML += `
@@ -55,9 +71,12 @@ function updateTableHeaders() {
             </td>`;
           }
           else{
-              
+            console.log("---------------",dayOfWeek2);
+            let result =controlDayForUser(dayOfWeek2,persona.assenze);
+            console.log("++++++++++++++++",result )
             classOfDay="selezionabile "
             let newTd=document.createElement("td");
+            newTd.textContent=result
             newTd.classList.add(classTr, "tdLavorativo");
             if(isCurrentDay(dayOfWeek2)){
               newTd.classList.add("currentDay")
@@ -65,11 +84,15 @@ function updateTableHeaders() {
             newTr.appendChild(newTd);
             const select_Element = createSelectElement(listaGiustificativi, classOfDay);
             newTd.appendChild(select_Element);
+
+        //    newTd.textContent ="test"
+        const dateString = "2024-05-21";
+        const dateObject = new Date(dateString);
             // newTr.innerHTML += `
             // <td class="${classTr} tdLavorativo"></td>`;
           }
       }
-  }
+  });
 
   // Aggiungi gestori di eventi onchange ai nuovi elementi select
   const selectElements = document.querySelectorAll('.select-option');
@@ -154,4 +177,22 @@ function createSelectElement(listaGiustif, classOfDay) {
     select.appendChild(option);
   });
   return select;
+}
+function controlDayForUser(day, assenze) {
+  let result = "";
+  let dayDate = new Date(day);
+  assenze.forEach((dayObj) => {
+      let objDate = new Date(dayObj.data);
+      if (
+          objDate.getDate() === dayDate.getDate() &&
+          objDate.getMonth() === dayDate.getMonth() &&
+          objDate.getFullYear() === dayDate.getFullYear()
+      ) {
+          result = dayObj.motivo;
+          console.log("*****************",result)
+          //return result;
+      }
+     
+  });
+ return result;
 }

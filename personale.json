@@ -11,7 +11,7 @@
         "livelloUser": 0,
         "assenze": [
             {
-                "data": "2024-04-16",
+                "data": "2024-04-18",
                 "motivo": "PT"
             },
             {
@@ -206,6 +206,451 @@
             {
                 "data": "2024-06-19",
                 "motivo": "legge 104"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Mario",
+            "cognome": "Rossi",
+            "codice_fiscale": "RSSMRA80A01H501Z"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Ufficio I - Attivita' Socio Assistenziali",
+        "livelloUser": 0,
+        "assenze": [
+            {
+                "data": "2024-04-15",
+                "motivo": "A"
+            },
+            {
+                "data": "2024-05-10",
+                "motivo": "BO"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Luigi",
+            "cognome": "Verdi",
+            "codice_fiscale": "VRDUGI70B03H501Y"
+        },
+        "amministrazione": "CNVVF",
+        "qualifica": "AA",
+        "ufficio": "Ufficio I - Affari Generali",
+        "livelloUser": 1,
+        "assenze": [
+            {
+                "data": "2024-06-20",
+                "motivo": "MAT"
+            },
+            {
+                "data": "2024-07-05",
+                "motivo": "CO"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Giuseppe",
+            "cognome": "Bianchi",
+            "codice_fiscale": "BNCGPP80C03H501X"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Ufficio II - Concorsi d'Accesso",
+        "livelloUser": 2,
+        "assenze": [
+            {
+                "data": "2024-04-30",
+                "motivo": "DL119"
+            },
+            {
+                "data": "2024-05-15",
+                "motivo": "CS42"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Francesco",
+            "cognome": "Neri",
+            "codice_fiscale": "NRIFNC90D04H501W"
+        },
+        "amministrazione": "CNVVF",
+        "qualifica": "AA",
+        "ufficio": "Ufficio II - Concorsi di Riqualificazione",
+        "livelloUser": 0,
+        "assenze": [
+            {
+                "data": "2024-06-10",
+                "motivo": "CS151"
+            },
+            {
+                "data": "2024-07-20",
+                "motivo": "legge 104"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Antonio",
+            "cognome": "Esposito",
+            "codice_fiscale": "SPSNTN70E05H501V"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Ufficio II - Affari Concorsuali e Contenzioso",
+        "livelloUser": 1,
+        "assenze": [
+            {
+                "data": "2024-05-25",
+                "motivo": "M"
+            },
+            {
+                "data": "2024-06-05",
+                "motivo": "MB"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Roberto",
+            "cognome": "Galli",
+            "codice_fiscale": "GLLRBT60F06H501U"
+        },
+        "amministrazione": "CNVVF",
+        "qualifica": "AA",
+        "ufficio": "Ufficio III - Affari Legali e Contenzioso",
+        "livelloUser": 2,
+        "assenze": [
+            {
+                "data": "2024-07-01",
+                "motivo": "MCS"
+            },
+            {
+                "data": "2024-07-15",
+                "motivo": "MH"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Luca",
+            "cognome": "Conti",
+            "codice_fiscale": "CNTLUC80G07H501T"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Direzione Centrale",
+        "livelloUser": 0,
+        "assenze": [
+            {
+                "data": "2024-04-12",
+                "motivo": "MI"
+            },
+            {
+                "data": "2024-05-22",
+                "motivo": "MR"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Stefano",
+            "cognome": "Ferrari",
+            "codice_fiscale": "FRRSTF90H08H501S"
+        },
+        "amministrazione": "CNVVF",
+        "qualifica": "AA",
+        "ufficio": "Ufficio I - Affari Generali",
+        "livelloUser": 1,
+        "assenze": [
+            {
+                "data": "2024-06-18",
+                "motivo": "MV"
+            },
+            {
+                "data": "2024-07-08",
+                "motivo": "PT"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Davide",
+            "cognome": "Ricci",
+            "codice_fiscale": "RCCDVD80I09H501R"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Ufficio II - Concorsi di Riqualificazione",
+        "livelloUser": 2,
+        "assenze": [
+            {
+                "data": "2024-04-28",
+                "motivo": "P937"
+            },
+            {
+                "data": "2024-05-13",
+                "motivo": "PM"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Giorgio",
+            "cognome": "Bruno",
+            "codice_fiscale": "BRNGGR70J10H501Q"
+        },
+        "amministrazione": "CNVVF",
+        "qualifica": "AA",
+        "ufficio": "Ufficio III - Affari Legali e Contenzioso",
+        "livelloUser": 0,
+        "assenze": [
+            {
+                "data": "2024-06-30",
+                "motivo": "PTT"
+            },
+            {
+                "data": "2024-07-12",
+                "motivo": "PR"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Andrea",
+            "cognome": "Greco",
+            "codice_fiscale": "GRCNDR80K11H501P"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Direzione Centrale",
+        "livelloUser": 1,
+        "assenze": [
+            {
+                "data": "2024-05-02",
+                "motivo": "P278"
+            },
+            {
+                "data": "2024-06-14",
+                "motivo": "PE"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Marco",
+            "cognome": "Marini",
+            "codice_fiscale": "MRNMRC90L12H501O"
+        },
+        "amministrazione": "CNVVF",
+        "qualifica": "AA",
+        "ufficio": "Ufficio I - Attivita' Socio Assistenziali",
+        "livelloUser": 2,
+        "assenze": [
+            {
+                "data": "2024-06-15",
+                "motivo": "PL"
+            },
+            {
+                "data": "2024-07-25",
+                "motivo": "RC"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Pietro",
+            "cognome": "De Luca",
+            "codice_fiscale": "DLCPTR80M13H501N"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Ufficio II - Concorsi d'Accesso",
+        "livelloUser": 0,
+        "assenze": [
+            {
+                "data": "2024-04-20",
+                "motivo": "SFS"
+            },
+            {
+                "data": "2024-05-05",
+                "motivo": "SW"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Valerio",
+            "cognome": "Moretti",
+            "codice_fiscale": "MRTVLR90N14H501M"
+        },
+        "amministrazione": "CNVVF",
+        "qualifica": "AA",
+        "ufficio": "Ufficio II - Affari Concorsuali e Contenzioso",
+        "livelloUser": 1,
+        "assenze": [
+            {
+                "data": "2024-06-25",
+                "motivo": "TE"
+            },
+            {
+                "data": "2024-07-18",
+                "motivo": "A"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Simone",
+            "cognome": "Russo",
+            "codice_fiscale": "RSSSMN85P15H501L"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Ufficio I - Affari Generali",
+        "livelloUser": 2,
+        "assenze": [
+            {
+                "data": "2024-04-25",
+                "motivo": "BO"
+            },
+            {
+                "data": "2024-05-30",
+                "motivo": "MAT"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Alessandro",
+            "cognome": "Colombo",
+            "codice_fiscale": "CLBLSN80Q16H501K"
+        },
+        "amministrazione": "CNVVF",
+        "qualifica": "AA",
+        "ufficio": "Ufficio II - Concorsi di Riqualificazione",
+        "livelloUser": 0,
+        "assenze": [
+            {
+                "data": "2024-06-12",
+                "motivo": "CO"
+            },
+            {
+                "data": "2024-07-10",
+                "motivo": "DL119"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Matteo",
+            "cognome": "Fontana",
+            "codice_fiscale": "FNTMTT85R17H501J"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Ufficio III - Affari Legali e Contenzioso",
+        "livelloUser": 1,
+        "assenze": [
+            {
+                "data": "2024-05-25",
+                "motivo": "CS42"
+            },
+            {
+                "data": "2024-06-15",
+                "motivo": "CS151"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Nicola",
+            "cognome": "Basile",
+            "codice_fiscale": "BSLNCL85S18H501I"
+        },
+        "amministrazione": "CNVVF",
+        "qualifica": "AA",
+        "ufficio": "Ufficio II - Concorsi d'Accesso",
+        "livelloUser": 2,
+        "assenze": [
+            {
+                "data": "2024-07-02",
+                "motivo": "legge 104"
+            },
+            {
+                "data": "2024-07-22",
+                "motivo": "M"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Giulio",
+            "cognome": "Fabbri",
+            "codice_fiscale": "FBBGLI85T19H501H"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Ufficio I - Attivita' Socio Assistenziali",
+        "livelloUser": 0,
+        "assenze": [
+            {
+                "data": "2024-04-22",
+                "motivo": "MB"
+            },
+            {
+                "data": "2024-05-18",
+                "motivo": "MCS"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Silvia",
+            "cognome": "Giordano",
+            "codice_fiscale": "GRDSLV85U20H501G"
+        },
+        "amministrazione": "CNVVF",
+        "qualifica": "AA",
+        "ufficio": "Direzione Centrale",
+        "livelloUser": 1,
+        "assenze": [
+            {
+                "data": "2024-06-08",
+                "motivo": "MH"
+            },
+            {
+                "data": "2024-07-05",
+                "motivo": "MI"
+            }
+        ]
+    },
+    {
+        "anagrafica": {
+            "nome": "Federico",
+            "cognome": "Romano",
+            "codice_fiscale": "RMNFDR85V21H501F"
+        },
+        "amministrazione": "AC",
+        "qualifica": "AA",
+        "ufficio": "Ufficio II - Concorsi di Riqualificazione",
+        "livelloUser": 2,
+        "assenze": [
+            {
+                "data": "2024-04-17",
+                "motivo": "MR"
+            },
+            {
+                "data": "2024-05-27",
+                "motivo": "MR"
+            },
+            {
+                "data": "2024-05-28",
+                "motivo": "MV"
             }
         ]
     }

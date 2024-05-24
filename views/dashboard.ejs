@@ -34,20 +34,28 @@
       text-align: center;
       color: rgb(83, 82, 82) ;
     }
+    th{
+      background-color: rgb(192, 189, 189)!important;
+    }
     .head-day{
       font-size: small;
       color: rgb(83, 82, 82)  !important;
+      background-color: rgb(192, 189, 189)!important;
       
     }
     /* Stile per le celle non lavorative */
     .head-non-lavorativo {
       background-color: #fab7b7 !important;
+      background-color: #fd6565 !important;
+      /* background-color: #4750ff !important; */
     } 
     .non-lavorativo {
       background-color: #f8e4e4 !important;
+      background-color: #fb9c9c !important;
     }
     .non-lavorativo-dispari{
       background-color: #f6dada !important;
+      background-color: #fa8080 !important;
     }
     /* Stile per le celle selezionate */
     .selezionato {
@@ -94,6 +102,8 @@
     }  
     tr{
       border-color: #d7d1d1;
+      white-space: nowrap;
+      
     }
     .trDispari{
       background-color: #f9f6f4 !important;
@@ -106,6 +116,7 @@
     }
     .currentDay{
       background: rgba(153, 255, 0, 0.158) !important; /* Colore di sfondo con trasparenza */
+      background:rgba(90, 252, 209, 0.29)!important;
     background-blend-mode: screen !important; /* Sovrapposizione del colore */
     }
     .container-select2{
@@ -121,6 +132,11 @@
     width: 400px;
        
    }
+   .container.inside-mt-3 {
+    padding: auto;
+    margin-top: 50px;
+    margin-left: 10px; /* Imposta il margine sinistro desiderato */
+  }
   </style>
 </head>
 <body>
@@ -128,7 +144,7 @@
   <!-- Include la tollbar -->
   <%- include('toolbar') %>
   <!-- Content -->
-  <div class="container mt-3">
+  <div class="container inside-mt-3">
     <h2 class="text-center">PRESENZE</h2>
 
     <!-- Content -->
@@ -164,11 +180,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
   <!-- Include il footer -->
+  <!-- <p><%= usersTable %></p> -->
 </main>
   <%- include('footer') %>
   <!-- Bootstrap Bundle with Popper -->
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script  type="module" src="/js/monthScroll.js"></script>
-  </script>
+  <script  type="module" src="/js/monthScroll.js" usersTable="<%= JSON.stringify(usersTable) %>"></script>
 </body>
 </html>
