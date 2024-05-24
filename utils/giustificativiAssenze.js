@@ -1,30 +1,45 @@
 export const listaGiustificativi = {
-    " ": "Annulla Assenza ",
-    "A": "Aspettativa per Motivi Personali - art. 22 comma 1 DPR 7/2008 e smi",
-    "BO": "Banca Ore",
-    "MAT": "Congedo Maternità",
-    "CO": "Congedo Ordinario",
-    "DL119": "Congedo Ordinario per Cure Lavoratori Invalidi - DL 119/2011",
-    "CS42": "Congedo Straordinario per Gravi Motivi EX ART. 42",
-    "CS151": "Congedo Straordinario D.L.VO 151/2001",
-    "legge 104": "L.5 febbraio 1992, n. 104",
-    "M": "Malattia",
-    "MB": "Malattia Bambino",
-    "MCS": "Malattia Causa di Servizio",
-    "MH": "Malattia per Day Hospital",
-    "MI": "Malattia per Infortunio sul Lavoro",
-    "MR": "Malattia per Ricovero Ospedaliero",
-    "MV": "Malattia per Visita",
-    "PT": "Part Time",
-    "P937": "Permesso L. 937/77 (EX FF.SS.)",
-    "PM": "Permesso Visita Medica - art. 35 - 18 ore annue",
-    "PTT": "Permesso per Testimonianza per Fatti Inerenti al Servizio",
-    "PR": "Permesso Retribuito - art. 32",
-    "P278": "Permesso Retribuito - DPCM 278/2000",
-    "PE": "Permesso Retribuito per Esami",
-    "PL": "Permesso Retribuito per Lutto",
-    "RC": "Riposo Compensativo",
-    "SFS": "Servizio Fuori Sede",
-    "SW": "Smart Working",
-    "TE": "Terapia"
+    " ": ["Annulla Assenza ",""],
+    "A": ["Aspettativa per Motivi Personali - art. 22 comma 1 DPR 7/2008 e smi.","A"],
+    "BO": ["Banca Ore","A"],
+    "MAT": ["Congedo Maternità","A"],
+    "CO": ["Congedo Ordinario","A"],
+    "DL119": ["Congedo Ordinario per Cure Lavoratori Invalidi - DL 119/2011","A"],
+    "CS42": ["Congedo Straordinario per Gravi Motivi EX ART. 42","A"],
+    "CS151": ["Congedo Straordinario D.L.VO 151/2001","A"],
+    "legge 104": ["L.5 febbraio 1992, n. 104","A"],
+    "M": ["Malattia","A"],
+    "MB": ["Malattia Bambino","A"],
+    "MCS": ["Malattia Causa di Servizio","A"],
+    "MH": ["Malattia per Day Hospital","A"],
+    "MI": ["Malattia per Infortunio sul Lavoro","A"],
+    "MR": ["Malattia per Ricovero Ospedaliero","A"],
+    "MV": ["Malattia per Visita","A"],
+    "PT": ["Part Time","A"],
+    "P937": ["Permesso L. 937/77 (EX FF.SS.)","A"],
+    "PM": ["Permesso Visita Medica - art. 35 - 18 ore annue","A"],
+    "PTT": ["Permesso per Testimonianza per Fatti Inerenti al Servizio","A"],
+    "PR": ["Permesso Retribuito - art. 32","A"],
+    "P278": ["Permesso Retribuito - DPCM 278/2000","A"],
+    "PE": ["Permesso Retribuito per Esami","A"],
+    "PL": ["Permesso Retribuito per Lutto","A"],
+    "RC": ["Riposo Compensativo","A"],
+    "SFS": ["Servizio Fuori Sede","SFS"],
+    "SW": ["Smart Working","SW"],
+    "TE": ["Terapia","A"],
   };
+
+              /*  $value1->assenza == "104"    ||
+							 //$value1->assenza == "PT"  ||
+							 $value1->assenza == "M"      ||
+							 $value1->assenza == "MV"     ||
+							 $value1->assenza == "PM"     ||
+							 $value1->assenza == "MB"     ||
+							 $value1->assenza == "MCS"    ||
+							 $value1->assenza == "TE"     ||
+							 $value1->assenza == "MH"     ||
+							 $value1->assenza == "MI"     ||
+							 $value1->assenza == "MR"     ||
+							 $value1->assenza == "DL119"  ||							 
+							 $value1->assenza == "CS42"))
+							$valore="A"; */

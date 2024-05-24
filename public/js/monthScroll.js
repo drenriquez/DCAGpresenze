@@ -148,7 +148,7 @@ function createSelectElement(listaGiustif, classOfDay) {
   Object.entries(listaGiustif).forEach(([key, value]) => {
     const option = document.createElement('option');
    
-    let descrizione=key+" "+value;
+    let descrizione=key+" "+value[0];
     option.setAttribute('data-value',key);
     option.textContent = descrizione;
     select.appendChild(option);
