@@ -9,7 +9,8 @@ export function isNonLavorativo(date) {
       { giorno: 1, mese: 11 },//tutti i Santi
       { giorno: 8, mese: 12 },//La Madonna
       { giorno: 25, mese: 12 }, // Natale
-      { giorno: 31, mese: 12 }, // San Silvestro
+      { giorno:26, mese:12},//Santo Stefano
+      //{ giorno: 31, mese: 12 }, // San Silvestro
     ];
   
     if (!Array.isArray(festivita)) {

@@ -19,6 +19,7 @@
     "https": "^1.0.0",
     "ldapjs": "^3.0.7",
     "mongodb": "^6.5.0",
+    "mongoose": "^8.4.0",
     "morgan": "~1.9.1",
     "nodemon": "^3.1.0",
     "rotating-file-stream": "^3.2.1",

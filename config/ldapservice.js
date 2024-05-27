@@ -24,8 +24,8 @@ async function ldapServerAuth(username, password) {
         console.error('LDAP bind error:', err);
         reject(err); // Reject se c'è un errore
       } else {
-        console.log('LDAP bind successful',risp);
-        servizioWAUC();
+        console.log('LDAP bind successful');//risp
+       // servizioWAUC(username);
         //define('WS_WAUC',  'https://wauc.dipvvf.it/api/');        // ESERCIZIO
        /*  per effettuare una richiesta HTTP GET a un servizio web.
          L'URL del servizio web viene costruito concatenando la costante WS_WAUC con la stringa "personale/?accountName="
@@ -57,10 +57,12 @@ async function ldapServerAuth(username, password) {
     });
   });
 }
-function servizioWAUC(){
+function servizioWAUC(usernameDipvvf){//tipo enrico.notaro
   // Definisci l'URL del servizio web con il parametro accountName
+  let username = usernameDipvvf.replace("@dipvvf.it", "");
+  console.log("+++++++++++++++++servizio wauc username",username)
   const baseUrl = 'https://wauc.dipvvf.it/api/';
-  const accountName = 'demetrio1.nicolo'; // Sostituisci 'username' con il valore reale
+  const accountName = username; // Sostituisci 'username' con il valore reale
   const url = `${baseUrl}personale/?accountName=${accountName}`;
 
   // Effettua la chiamata fetch

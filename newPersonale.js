@@ -1,10 +1,10 @@
-
+let data=
 [
     {
         "anagrafica": {
             "nome": "Lorenzo",
             "cognome": "Moretti",
-            "codiceFiscale": "MRTLNZ90A01H501A"
+            "codice_fiscale": "MRTLNZ90A01H501A"
         },
         "amministrazione": "AC",
         "qualifica": "AA",
@@ -22,7 +22,7 @@
             },
             "2025": {
                 "01": {
-                    "15": "CO",
+                    "15":"CO",
                     "18": "PT"
                 },
                 "02": {
@@ -35,7 +35,7 @@
         "anagrafica": {
             "nome": "Elisa",
             "cognome": "Neri",
-            "codiceFiscale": "NRLISA80B02H501B"
+            "codice_fiscale": "NRLISA80B02H501B"
         },
         "amministrazione": "CNVVF",
         "qualifica": "AA",
@@ -54,40 +54,9 @@
     },
     {
         "anagrafica": {
-            "nome": "Enrico",
-            "cognome": "Notaro",
-            "codiceFiscale": "NTRNRC80S15G273K"
-        },
-        "amministrazione": "AC",
-        "qualifica": "AI",
-        "ufficio": "Ufficio II - Affari Concorsuali e Contenzioso",
-        "livelloUser": 2,
-        "assenze": {
-            "2024": {
-                "04": {
-                    "18": "PT",
-                    "20": "CO"
-                },
-                "06": {
-                    "11": "P937"
-                }
-            },
-            "2025": {
-                "01": {
-                    "15": "CO",
-                    "18": "PT"
-                },
-                "02": {
-                    "11": "P937"
-                }
-            }
-        }
-    },
-    {
-        "anagrafica": {
             "nome": "Matteo",
             "cognome": "Bellini",
-            "codiceFiscale": "BLLMTT80C03H501C"
+            "codice_fiscale": "BLLMTT80C03H501C"
         },
         "amministrazione": "AC",
         "qualifica": "AA",
@@ -108,7 +77,7 @@
         "anagrafica": {
             "nome": "Sara",
             "cognome": "Colucci",
-            "codiceFiscale": "CLCSRA70D04H501D"
+            "codice_fiscale": "CLCSRA70D04H501D"
         },
         "amministrazione": "CNVVF",
         "qualifica": "AA",
@@ -129,7 +98,7 @@
         "anagrafica": {
             "nome": "Giorgia",
             "cognome": "Romani",
-            "codiceFiscale": "RMNGRG80E05H501E"
+            "codice_fiscale": "RMNGRG80E05H501E"
         },
         "amministrazione": "AC",
         "qualifica": "AA",
@@ -150,7 +119,7 @@
         "anagrafica": {
             "nome": "Davide",
             "cognome": "Leoni",
-            "codiceFiscale": "LNIDVD90F06H501F"
+            "codice_fiscale": "LNIDVD90F06H501F"
         },
         "amministrazione": "CNVVF",
         "qualifica": "AA",
@@ -171,7 +140,7 @@
         "anagrafica": {
             "nome": "Paola",
             "cognome": "Marchi",
-            "codiceFiscale": "MRCPA80G07H501G"
+            "codice_fiscale": "MRCPA80G07H501G"
         },
         "amministrazione": "AC",
         "qualifica": "AA",
@@ -192,7 +161,7 @@
         "anagrafica": {
             "nome": "Andrea",
             "cognome": "Ferraro",
-            "codiceFiscale": "FRRAND80H08H501H"
+            "codice_fiscale": "FRRAND80H08H501H"
         },
         "amministrazione": "CNVVF",
         "qualifica": "AA",
@@ -213,7 +182,7 @@
         "anagrafica": {
             "nome": "Valeria",
             "cognome": "Barone",
-            "codiceFiscale": "BRNVAL90I09H501I"
+            "codice_fiscale": "BRNVAL90I09H501I"
         },
         "amministrazione": "AC",
         "qualifica": "AA",
@@ -234,7 +203,7 @@
         "anagrafica": {
             "nome": "Francesca",
             "cognome": "Villa",
-            "codiceFiscale": "VLLFNC90L10H501J"
+            "codice_fiscale": "VLLFNC90L10H501J"
         },
         "amministrazione": "CNVVF",
         "qualifica": "AA",
@@ -255,7 +224,7 @@
         "anagrafica": {
             "nome": "Mario",
             "cognome": "Rossi",
-            "codiceFiscale": "RSSMRA80A01H501Z"
+            "codice_fiscale": "RSSMRA80A01H501Z"
         },
         "amministrazione": "AC",
         "qualifica": "AA",
@@ -276,7 +245,7 @@
         "anagrafica": {
             "nome": "Luigi",
             "cognome": "Verdi",
-            "codiceFiscale": "VRDUGI70B03H501Y"
+            "codice_fiscale": "VRDUGI70B03H501Y"
         },
         "amministrazione": "CNVVF",
         "qualifica": "AA",
@@ -297,7 +266,7 @@
         "anagrafica": {
             "nome": "Giuseppe",
             "cognome": "Bianchi",
-            "codiceFiscale": "BNCGPP80C03H501X"
+            "codice_fiscale": "BNCGPP80C03H501X"
         },
         "amministrazione": "AC",
         "qualifica": "AA",
@@ -318,7 +287,7 @@
         "anagrafica": {
             "nome": "Francesco",
             "cognome": "Neri",
-            "codiceFiscale": "NRIFNC90D04H501W"
+            "codice_fiscale": "NRIFNC90D04H501W"
         },
         "amministrazione": "CNVVF",
         "qualifica": "AA",
@@ -335,4 +304,15 @@
             }
         }
     }
-]
+];
+data.forEach(item => {
+    // Se esiste 'codice_fiscale' nella proprietà 'anagrafica'
+    if (item.anagrafica.codice_fiscale) {
+        // Assegna il valore di 'codice_fiscale' a 'codiceFiscale'
+        item.anagrafica.codiceFiscale = item.anagrafica.codice_fiscale;
+        // Elimina la vecchia proprietà 'codice_fiscale'
+        delete item.anagrafica.codice_fiscale;
+    }
+});
+
+console.log(data);

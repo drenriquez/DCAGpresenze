@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('nextMonth').addEventListener('click', nextMonth);
   document.getElementById('monthSelector').addEventListener('change', updateTableHeaders);
   //const dataString = document.currentScript.getAttribute('usersTable');
-  const usersTableString = document.querySelector('script[type="module"]').getAttribute('usersTable');
+  //const usersTableString = document.querySelector('script[type="module"]').getAttribute('usersTable');
   //console.log(usersTableString);
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
@@ -19,19 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
 function updateTableHeaders() {
   const usersTableString = document.querySelector('script[type="module"]').getAttribute('usersTable');
   const usersTable = JSON.parse(usersTableString);
-  //console.log("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",usersTable)
+  const userCodiceFiscale=document.querySelector('script[type="module"]').getAttribute('userCodFisc');
+  const livelloUser=document.querySelector('script[type="module"]').getAttribute('livelloUser');
+  let oggi = new Date();
   const tableHeader = document.getElementById('tableHeader');
-  const rowsHeader = document.getElementById("rowsHeader");
+ // const rowsHeader = document.getElementById("rowsHeader");
   const tableBody = document.getElementById("tableBody");
   if (!tableHeader) return;
-  const headRows=['riga1', 'riga2', 'riga3','riga4', 'riga5', 'riga6','riga7','riga8', 'riga9','riga10','riga11'];
+
   const monthSelector = document.getElementById('monthSelector');
   const selectedDate = new Date(monthSelector.value);
 
-  
-  //console.log("TTTTTTTTTTTTTTTTTTTTTTTTt " ,selectedDate)
-  selectedDate.setDate(4);
-  //console.log("Trrrrrrrrrrrrr " ,selectedDate)
 
   const daysInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
   tableHeader.innerHTML = '<tr><th></th>'; // Resetta le intestazioni della tabella
@@ -49,9 +47,11 @@ function updateTableHeaders() {
   // Crea le righe per ogni dipendente
   usersTable.forEach((persona, index) => {
       const cognomeNome = `${persona.anagrafica.cognome} ${persona.anagrafica.nome}`;
+      let classUserLog=persona.anagrafica.codiceFiscale.toUpperCase()===userCodiceFiscale.toUpperCase()? "utenteLoggato": "nonLoggato";
+      let classUserLogNotWork=persona.anagrafica.codiceFiscale.toUpperCase()===userCodiceFiscale.toUpperCase()? "utenteLoggatoNonLavorativo": "nonLoggato";
  // for(const[index,headRow ]of headRows.entries()){//entries()  restituisce un nuovo oggetto iterabile, coppie chiave-valore per ogni elemento 
       let newTr=document.createElement("tr");
-      newTr.textContent = cognomeNome ;
+      newTr.textContent = cognomeNome.toUpperCase() ;
       tableBody.appendChild(newTr)
       let classTr="none";
       let classTdnonLAv="";
@@ -59,7 +59,8 @@ function updateTableHeaders() {
         classTr="trDispari"; // Aggiungi la classe CSS
         classTdnonLAv="non-lavorativo-dispari";
       }
-      newTr.classList.add(classTr); 
+      newTr.classList.add(classTr,classUserLog);
+      //newTr.classList.add(classUserLog); 
       for (let i = 1; i <= daysInMonth; i++) {
           let classOfDay="";
           let dayOfWeek2=changeDay(selectedDate, i);
@@ -67,27 +68,35 @@ function updateTableHeaders() {
           if(isNonLavorativo(dayOfWeek2)===1){ 
             const currentClassDay2 = isCurrentDay(dayOfWeek2) ?  "currentDay" : "";         
             newTr.innerHTML += `
-            <td class="non-lavorativo ${classTdnonLAv} ${currentClassDay2}">
+            <td class="non-lavorativo ${classTdnonLAv} ${currentClassDay2} ${classUserLogNotWork}">
             </td>`;
           }
           else{
-            console.log("---------------",dayOfWeek2);
+           
             let result =controlDayForUser(dayOfWeek2,persona.assenze);
-            console.log("++++++++++++++++",result )
             classOfDay="selezionabile "
             let newTd=document.createElement("td");
             newTd.textContent=result
-            newTd.classList.add(classTr, "tdLavorativo");
+            newTd.classList.add(classTr, "tdLavorativo",classUserLog);
             if(isCurrentDay(dayOfWeek2)){
-              newTd.classList.add("currentDay")
+              newTd.classList.add("currentDay",classUserLog)
             };
             newTr.appendChild(newTd);
-            const select_Element = createSelectElement(listaGiustificativi, classOfDay);
-            newTd.appendChild(select_Element);
-
-        //    newTd.textContent ="test"
-        const dateString = "2024-05-21";
-        const dateObject = new Date(dateString);
+           
+            if(livelloUser==="2"){
+             
+              const select_Element = createSelectElement(listaGiustificativi, classOfDay);
+              select_Element.classList.add(classUserLog)
+              newTd.appendChild(select_Element);
+            }
+            else{
+              if((dayOfWeek2>=(new Date())||isCurrentDay(dayOfWeek2))&&(persona.anagrafica.codiceFiscale.toUpperCase()===userCodiceFiscale.toUpperCase())){
+                const select_Element = createSelectElement(listaGiustificativi, classOfDay);
+                select_Element.classList.add(classUserLog)
+                newTd.appendChild(select_Element);
+              }
+            }
+        //    newTd.textContent ="tes
             // newTr.innerHTML += `
             // <td class="${classTr} tdLavorativo"></td>`;
           }
@@ -181,18 +190,11 @@ function createSelectElement(listaGiustif, classOfDay) {
 function controlDayForUser(day, assenze) {
   let result = "";
   let dayDate = new Date(day);
-  assenze.forEach((dayObj) => {
-      let objDate = new Date(dayObj.data);
-      if (
-          objDate.getDate() === dayDate.getDate() &&
-          objDate.getMonth() === dayDate.getMonth() &&
-          objDate.getFullYear() === dayDate.getFullYear()
-      ) {
-          result = dayObj.motivo;
-          console.log("*****************",result)
-          //return result;
-      }
-     
-  });
- return result;
+  let year = dayDate.getFullYear();
+  let month = ("0" + (dayDate.getMonth() + 1)).slice(-2); // Aggiunge un padding zero per assicurarsi che il mese sia sempre a due cifre
+  let date = ("0" + dayDate.getDate()).slice(-2); // Aggiunge un padding zero per assicurarsi che il giorno sia sempre a due cifre
+  if (assenze[year] && assenze[year][month] && assenze[year][month][date]) {
+      result = assenze[year][month][date];
+  } 
+  return result;
 }

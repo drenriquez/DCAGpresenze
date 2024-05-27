@@ -137,6 +137,12 @@
     margin-top: 50px;
     margin-left: 10px; /* Imposta il margine sinistro desiderato */
   }
+  .utenteLoggato {
+    background:rgba(90, 252, 209, 0.2)!important; 
+  }
+  .utenteLoggatoNonLavorativo{
+      background-color: #fb9c9c7b !important;
+  }
   </style>
 </head>
 <body>
@@ -185,6 +191,10 @@
   <%- include('footer') %>
   <!-- Bootstrap Bundle with Popper -->
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script  type="module" src="/js/monthScroll.js" usersTable="<%= JSON.stringify(usersTable) %>"></script>
+  <script  type="module" src="/js/monthScroll.js" 
+    usersTable="<%= JSON.stringify(usersTable) %>"
+    userCodFisc="<%= userCodFisc %>"
+    livelloUser="<%= livelloUser %>">
+  </script>
 </body>
 </html>
