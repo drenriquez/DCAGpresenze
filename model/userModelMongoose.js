@@ -17,17 +17,20 @@ const UserSchema = new mongoose.Schema({
     }]
 }); */
 
+// Definizione degli schemi per le assenze annuali e mensili
+const DailyAbsencesSchema = new mongoose.Schema({
+    day: String,
+    reason: String
+}, { _id: false });
 
-
-// Definizione dello schema per le assenze annuali e mensili
 const MonthlyAbsencesSchema = new mongoose.Schema({
-    type: Map,
-    of: String
+    month: String,
+    days: [DailyAbsencesSchema]
 }, { _id: false });
 
 const YearlyAbsencesSchema = new mongoose.Schema({
-    type: Map,
-    of: MonthlyAbsencesSchema
+    year: String,
+    months: [MonthlyAbsencesSchema]
 }, { _id: false });
 
 // Definizione dello schema per la collezione
@@ -41,10 +44,7 @@ const UserSchema = new mongoose.Schema({
     qualifica: String,
     ufficio: String,
     livelloUser: Number,
-    assenze: {
-        type: Map,
-        of: YearlyAbsencesSchema
-    }
+    assenze: [YearlyAbsencesSchema]
 });
 
 // Creazione del modello e definizione delle operazioni CRUD
@@ -79,6 +79,12 @@ User.getUserByCodiceFiscale = async (codiceFiscale) => {
 // Funzione per trovare tutti gli utenti di un particolare ufficio
 User.getUsersByUfficio = async (ufficio) => {
     return await User.find({ ufficio: ufficio });
+};
+
+// Funzione per ottenere il livelloUser tramite codice fiscale
+User.getLivelloUserByCodiceFiscale = async (codiceFiscale) => {
+    const user = await User.findOne({ 'anagrafica.codiceFiscale': codiceFiscale });
+    return user ? user.livelloUser : null;
 };
 
 module.exports = User;

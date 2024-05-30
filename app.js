@@ -28,10 +28,15 @@ const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const dashboardRouter = require('./routes/dashboard');
+const userController = require('./controllers/userController');
 const app = express();
 // Imposta la directory in cui si trova il file monthScroll.js
 const utilsPath = path.join(__dirname, 'utils');
 
+// Middleware per il parsing delle richieste JSON
+app.use(express.json());
+
+app.use('/api', userController);
 app.use(helmet());
 app.use(cookieParser());
 //app.use(sessionMiddleware);

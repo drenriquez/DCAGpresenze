@@ -85,13 +85,13 @@ function updateTableHeaders() {
            
             if(livelloUser==="2"){
              
-              const select_Element = createSelectElement(listaGiustificativi, classOfDay);
+              const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona._id);
               select_Element.classList.add(classUserLog)
               newTd.appendChild(select_Element);
             }
             else{
               if((dayOfWeek2>=(new Date())||isCurrentDay(dayOfWeek2))&&(persona.anagrafica.codiceFiscale.toUpperCase()===userCodiceFiscale.toUpperCase())){
-                const select_Element = createSelectElement(listaGiustificativi, classOfDay);
+                const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona._id);
                 select_Element.classList.add(classUserLog)
                 newTd.appendChild(select_Element);
               }
@@ -114,6 +114,8 @@ function updateTableHeaders() {
 
 function updateCellValue(selectElement) {
   const selectedOption = selectElement.options[selectElement.selectedIndex];
+  const actualValuesTest=selectElement.getAttribute("data-test")
+  console.log("------------------",actualValuesTest)
     
     // Recupera il valore associato dall'attributo 'data-value'
   const actualValue = selectedOption.getAttribute('data-value');
@@ -121,7 +123,9 @@ function updateCellValue(selectElement) {
   cell.textContent = actualValue;
   const selectElementNew = createSelectElement(listaGiustificativi, "select-option");
   cell.appendChild(selectElementNew);
+  console.log("***********************",actualValue)
   selectElementNew.addEventListener('change', function() {
+    console.log("***********************",actualValue)
       updateCellValue(this);
   });
 }
@@ -164,8 +168,9 @@ function isCurrentDay(day){
   return isCurrent                      
 }
 // Funzione per creare un elemento <select> con opzioni
-function createSelectElement(listaGiustif, classOfDay) {
+function createSelectElement(listaGiustif, classOfDay, idUser) {
   const select = document.createElement('select');
+  select.setAttribute('data-user', idUser)
   select.className = `form-control custom-select select-option ${classOfDay}`;
   const defaultOption = document.createElement('option');
   defaultOption.selected = true;
