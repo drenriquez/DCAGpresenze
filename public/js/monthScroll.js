@@ -1,13 +1,13 @@
 import { isNonLavorativo } from "../../utils/giorniNonLavorativi.js";
 import { getDayAbbreviation } from "../../utils/dayOfWeak.js";
 import { listaGiustificativi } from "../../utils/giustificativiAssenze.js";
-document.addEventListener('DOMContentLoaded', function() {
+import { APIgetAllUsersInOrdineCognome } from "../../utils/apiUtils.js";
+
+document.addEventListener('DOMContentLoaded', async function() {
+  
   document.getElementById('previousMonth').addEventListener('click', previousMonth);
   document.getElementById('nextMonth').addEventListener('click', nextMonth);
-  document.getElementById('monthSelector').addEventListener('change', updateTableHeaders);
-  //const dataString = document.currentScript.getAttribute('usersTable');
-  //const usersTableString = document.querySelector('script[type="module"]').getAttribute('usersTable');
-  //console.log(usersTableString);
+  document.getElementById('monthSelector').addEventListener('change', updateTableHeaders());
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
   const currentYear = currentDate.getFullYear();
@@ -16,12 +16,12 @@ document.addEventListener('DOMContentLoaded', function() {
   updateTableHeaders();
 });
 
-function updateTableHeaders() {
-  const usersTableString = document.querySelector('script[type="module"]').getAttribute('usersTable');
-  const usersTable = JSON.parse(usersTableString);
+async function updateTableHeaders() {
+  const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
+  const usersTable=await APIgetAllUsersInOrdineCognome(hostApi)
+  //const usersTable = JSON.parse(usersTableString);
   const userCodiceFiscale=document.querySelector('script[type="module"]').getAttribute('userCodFisc');
   const livelloUser=document.querySelector('script[type="module"]').getAttribute('livelloUser');
-  let oggi = new Date();
   const tableHeader = document.getElementById('tableHeader');
  // const rowsHeader = document.getElementById("rowsHeader");
   const tableBody = document.getElementById("tableBody");
@@ -29,8 +29,6 @@ function updateTableHeaders() {
 
   const monthSelector = document.getElementById('monthSelector');
   const selectedDate = new Date(monthSelector.value);
-
-
   const daysInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
   tableHeader.innerHTML = '<tr><th></th>'; // Resetta le intestazioni della tabella
   tableBody.innerHTML = '<tbody id="tableBody"></tbody>'// Resetta le intestazioni delle righe della tabella
@@ -73,6 +71,8 @@ function updateTableHeaders() {
           }
           else{
            
+            
+
             let result =controlDayForUser(dayOfWeek2,persona.assenze);
             classOfDay="selezionabile "
             let newTd=document.createElement("td");
@@ -84,14 +84,18 @@ function updateTableHeaders() {
             newTr.appendChild(newTd);
            
             if(livelloUser==="2"){
-             
-              const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona._id);
+              // const dataDay=String(selectedDate.getDay()).padStart(2,'0')  // Formatta il giorno con due cifre
+              // const dataMonth = selectedDate.getMonth();
+              // const dataYear = selectedDate.getFullYear();
+          
+              //console.log("+++++++++++ DAY ",dataDay)
+              const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona._id,dayOfWeek2);
               select_Element.classList.add(classUserLog)
               newTd.appendChild(select_Element);
             }
             else{
               if((dayOfWeek2>=(new Date())||isCurrentDay(dayOfWeek2))&&(persona.anagrafica.codiceFiscale.toUpperCase()===userCodiceFiscale.toUpperCase())){
-                const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona._id);
+                const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona._id,dayOfWeek2);
                 select_Element.classList.add(classUserLog)
                 newTd.appendChild(select_Element);
               }
@@ -107,26 +111,24 @@ function updateTableHeaders() {
   const selectElements = document.querySelectorAll('.select-option');
     selectElements.forEach(selectElement => {
         selectElement.addEventListener('change', function() {
-            updateCellValue(this);
+            console.log(this.dataset.user)
+            updateCellValue(this,this.classList,this.dataset.user,this.dataset.day);
         });
     });
 }
 
-function updateCellValue(selectElement) {
+function updateCellValue(selectElement,classOfDay,userId,day) {
   const selectedOption = selectElement.options[selectElement.selectedIndex];
-  const actualValuesTest=selectElement.getAttribute("data-test")
-  console.log("------------------",actualValuesTest)
-    
     // Recupera il valore associato dall'attributo 'data-value'
   const actualValue = selectedOption.getAttribute('data-value');
   const cell = selectElement.parentNode;
   cell.textContent = actualValue;
-  const selectElementNew = createSelectElement(listaGiustificativi, "select-option");
+  const selectElementNew = createSelectElement(listaGiustificativi,classOfDay,userId,day);
   cell.appendChild(selectElementNew);
   console.log("***********************",actualValue)
   selectElementNew.addEventListener('change', function() {
     console.log("***********************",actualValue)
-      updateCellValue(this);
+      updateCellValue(this,classOfDay,userId,day);
   });
 }
 function previousMonth() {
@@ -168,9 +170,10 @@ function isCurrentDay(day){
   return isCurrent                      
 }
 // Funzione per creare un elemento <select> con opzioni
-function createSelectElement(listaGiustif, classOfDay, idUser) {
+function createSelectElement(listaGiustif, classOfDay, idUser, day) {
   const select = document.createElement('select');
   select.setAttribute('data-user', idUser)
+  select.setAttribute('data-day',day)
   select.className = `form-control custom-select select-option ${classOfDay}`;
   const defaultOption = document.createElement('option');
   defaultOption.selected = true;

@@ -2,10 +2,10 @@
 require('dotenv').config({path:'../.env'});
 const ldapServerAuth = require('../config/ldapservice');
 const servizioWAUC = require('../config/waucService');
-const userModel = require('../model/userModel');
+const UserModel = require('../model/userModel');
 // const axios = require('axios');
 // const base64 = require('base-64');
-
+const userModel= new UserModel()
 
 
 

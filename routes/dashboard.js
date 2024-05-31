@@ -1,24 +1,31 @@
 
 //const users=require("../personale.json");
+require('dotenv').config({path:'../.env'});
 const express = require('express');
 const router = express.Router();
 const { userAuth } = require('../middleware/userAuth');
-const userModel = require('../model/userModel');
+const UserModel = require('../model/userModel');
 const axios = require('axios');
 const base64 = require('base-64');
 
+const userModel = new UserModel();
 
 
 /* GET home page. */
 router.get('/dashboard', userAuth,async function(req, res, next) {
   
-
+  const apiUserURL=process.env.HOST_SERVER_API
   //const usersInOrder=await getAllUsersInOrdineCognome()
   const usersInOrder=await userModel.getAllUsersInOrdineCognome()
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa",usersInOrder)
+  //console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa",req.session)
   
   // Passa i dati al template EJS
-  res.render('dashboard', { usersTable: usersInOrder, userCodFisc: req.session.codiceFiscale, livelloUser: req.session.livelloUser });
+  res.render('dashboard', { 
+    usersTable: usersInOrder,
+    userCodFisc: req.session.codiceFiscale,
+    livelloUser: req.session.livelloUser,
+    apiUserURL: apiUserURL 
+  });
 });
 
 
