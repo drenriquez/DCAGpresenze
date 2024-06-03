@@ -29,6 +29,7 @@ const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const dashboardRouter = require('./routes/dashboard');
+const adminRouter =require('./routes/admin');
 const UserController = require('./controllers/userController');
 const app = express();
 const utilsPath = path.join(__dirname, 'utils');
@@ -90,6 +91,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'utils')));
 app.use('/model', express.static(path.join(__dirname, 'model')));
+app.use('/utils', express.static(path.join(__dirname, 'model')));
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 app.use('/utils', express.static(utilsPath, {
   setHeaders: (res, filePath) => {
@@ -104,6 +106,7 @@ app.use(userApiAuth,usersRouter);
 app.use(loginRouter);
 app.use(logoutRouter);
 app.use(dashboardRouter);
+app.use(adminRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

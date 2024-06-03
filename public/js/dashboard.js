@@ -1,10 +1,12 @@
 import { isNonLavorativo } from "../../utils/giorniNonLavorativi.js";
 import { getDayAbbreviation } from "../../utils/dayOfWeak.js";
 import { listaGiustificativi } from "../../utils/giustificativiAssenze.js";
-import { APIgetAllUsersInOrdineCognome, APIaddAbsenceById, APIdeleteAbsenceById } from "../../utils/apiUtils.js";
+import { listeUfficiEdAmm } from "../../utils/listeAmministrazioniEdUffici.js";
+import { APIgetAllUsersInOrdineCognome, APIaddAbsenceById, APIdeleteAbsenceById, APIgetUsersByUfficio } from "../../utils/apiUtils.js";
 import { UserModel } from "../../model/userModel.js";
+
 document.addEventListener('DOMContentLoaded', async function() {
-  
+ 
   document.getElementById('previousMonth').addEventListener('click', previousMonth);
   document.getElementById('nextMonth').addEventListener('click', nextMonth);
   document.getElementById('monthSelector').addEventListener('change', updateTableHeaders());
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   const currentYear = currentDate.getFullYear();
   const formattedDate = `${currentYear}-${currentMonth.toString().padStart(2, '0')}`;
   document.getElementById('monthSelector').value = formattedDate;
+  popolaSelect("selectUfficio",listeUfficiEdAmm.uffici,stampa)
   updateTableHeaders();
 });
 
@@ -23,8 +26,6 @@ async function updateTableHeaders() {
   const userCodiceFiscale=document.querySelector('script[type="module"]').getAttribute('userCodFisc');
   const livelloUser=document.querySelector('script[type="module"]').getAttribute('livelloUser');
   const tableHeader = document.getElementById('tableHeader');
-  let navbar=document.getElementsByTagName('nav');
-  console.log('--------------------',navbar)
  // const rowsHeader = document.getElementById("rowsHeader");
   const tableBody = document.getElementById("tableBody");
   if (!tableHeader) return;
@@ -227,4 +228,37 @@ function controlDayForUser(listaGiustificativi,isUserLogged,level,day, assenze) 
     return listaGiustificativi[result][1]
     
   }
+}
+// Funzione per popolare la select con le opzioni dall'array
+async function popolaSelect(idSelectElement, opzioniArray, onChangeFunction) {
+  var select = document.getElementById(idSelectElement);
+
+  // Rimuovi le opzioni esistenti
+  select.innerHTML = "";
+
+  // Aggiungi le opzioni dall'array alla select
+  opzioniArray.forEach(function(opzione, index) {
+      var option = document.createElement("option");
+      option.text = opzione;
+      option.value = opzione;
+
+      // Se è il primo elemento dell'array, selezionalo di default
+      if (index === 0) {
+          option.selected = true;
+      }
+
+      select.appendChild(option);
+  });
+   // Aggiungi un gestore di eventi per l'evento "change"
+   select.addEventListener("change", function() {
+    var selectedValue = this.value; // Ottieni il valore selezionato
+    // Chiama la funzione onChangeFunction passando il valore selezionato come parametro
+    onChangeFunction(selectedValue);
+});
+}
+async function stampa(valore){
+  const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
+ 
+  console.log('333333333333333333333333',valore)
+ APIgetUsersByUfficio(hostApi,valore).then((res)=>{ console.log(res)})
 }
