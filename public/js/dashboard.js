@@ -5,8 +5,10 @@ import { listeUfficiEdAmm } from "../../utils/listeAmministrazioniEdUffici.js";
 import { APIgetAllUsersInOrdineCognome, APIaddAbsenceById, APIdeleteAbsenceById, APIgetUsersByUfficio } from "../../utils/apiUtils.js";
 import { UserModel } from "../../model/userModel.js";
 
+let usersTable=""//*******************test */
 document.addEventListener('DOMContentLoaded', async function() {
- 
+  const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
+  usersTable=await APIgetAllUsersInOrdineCognome(hostApi);//*******************test */
   document.getElementById('previousMonth').addEventListener('click', previousMonth);
   document.getElementById('nextMonth').addEventListener('click', nextMonth);
   document.getElementById('monthSelector').addEventListener('change', updateTableHeaders());
@@ -15,13 +17,17 @@ document.addEventListener('DOMContentLoaded', async function() {
   const currentYear = currentDate.getFullYear();
   const formattedDate = `${currentYear}-${currentMonth.toString().padStart(2, '0')}`;
   document.getElementById('monthSelector').value = formattedDate;
-  popolaSelect("selectUfficio",listeUfficiEdAmm.uffici,stampa)
+  popolaSelect("selectUfficio",listeUfficiEdAmm.uffici,callbackSelectUfficio)
   updateTableHeaders();
 });
 
-async function updateTableHeaders() {
-  const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
-  const usersTable=await APIgetAllUsersInOrdineCognome(hostApi);
+async function updateTableHeaders(tabella) {
+  if(!tabella){
+    const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
+    usersTable=await APIgetAllUsersInOrdineCognome(hostApi);}
+  else{
+    usersTable=tabella;
+  }
   //const usersTable = JSON.parse(usersTableString);
   const userCodiceFiscale=document.querySelector('script[type="module"]').getAttribute('userCodFisc');
   const livelloUser=document.querySelector('script[type="module"]').getAttribute('livelloUser');
@@ -154,6 +160,7 @@ function previousMonth() {
   date.setMonth(date.getMonth() - 1);
   monthSelector.value = formatDate(date);
   updateTableHeaders();
+  ripristinaValoreDefaultSelect()
 }
 
 function nextMonth() {
@@ -162,6 +169,7 @@ function nextMonth() {
   date.setMonth(date.getMonth() + 1);
   monthSelector.value = formatDate(date);
   updateTableHeaders();
+  ripristinaValoreDefaultSelect()
 }
 
 function formatDate(date) {
@@ -256,9 +264,21 @@ async function popolaSelect(idSelectElement, opzioniArray, onChangeFunction) {
     onChangeFunction(selectedValue);
 });
 }
-async function stampa(valore){
-  const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
+async function callbackSelectUfficio(valore){
+  if(valore==="Tutti"){
+    updateTableHeaders()
+  }
+  else{
+    const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
+    console.log('333333333333333333333333',valore)
+    APIgetUsersByUfficio(hostApi,valore).then((res)=>{ updateTableHeaders(res)})
+  }
  
-  console.log('333333333333333333333333',valore)
- APIgetUsersByUfficio(hostApi,valore).then((res)=>{ console.log(res)})
+}
+// Funzione per ripristinare il valore predefinito del select
+function ripristinaValoreDefaultSelect() {
+  // Trova l'elemento select
+  var select = document.getElementById("selectUfficio");
+  // Imposta il valore selezionato al valore predefinito desiderato
+  select.value = "Tutti"; // Imposta il valore predefinito vuoto
 }
