@@ -20,6 +20,54 @@ const APIgetAllUsersInOrdineCognome = async (host) => {
       throw error;
     }
   };
-export{
-    APIgetAllUsersInOrdineCognome
-}
+
+  const APIaddAbsenceById = async (host, id, data, motivo) => {
+    try {
+      const response = await fetch(`${host}api/users/addAbsenceById`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin', // Assicura l'invio dei cookie con la richiesta
+        body: JSON.stringify({ id, data, motivo })
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const user = await response.json();
+      return user;
+    } catch (error) {
+      console.error('Error adding absence:', error);
+      throw error;
+    }
+  };
+
+  const APIdeleteAbsenceById = async (host, id, data) => {
+    try {
+      const response = await fetch(`${host}api/users/deleteAbsenceById`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'same-origin', // Assicura l'invio dei cookie con la richiesta
+        body: JSON.stringify({ id, data })
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const user = await response.json();
+      return user;
+    } catch (error) {
+      console.error('Error deleting absence:', error);
+      throw error;
+    }
+  };
+  export {
+    APIgetAllUsersInOrdineCognome,
+    APIaddAbsenceById,
+    APIdeleteAbsenceById
+  };

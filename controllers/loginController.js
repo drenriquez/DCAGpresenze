@@ -2,10 +2,10 @@
 require('dotenv').config({path:'../.env'});
 const ldapServerAuth = require('../config/ldapservice');
 const servizioWAUC = require('../config/waucService');
-const UserModel = require('../model/userModel');
+const UserDao = require('../dao/userDao');
 // const axios = require('axios');
 // const base64 = require('base-64');
-const userModel= new UserModel()
+const userDao= new UserDao()
 
 
 
@@ -28,7 +28,7 @@ async function login(req, res, next) {
           req.session.name=dataWauc[0].nome;
           req.session.cognome=dataWauc[0].cognome;
           req.session.codiceFiscale=dataWauc[0].codiceFiscale;
-          req.session.livelloUser = await userModel.getLivelloUserByCodiceFiscale(req.session.codiceFiscale);
+          req.session.livelloUser = await userDao.getLivelloUserByCodiceFiscale(req.session.codiceFiscale);
           //req.session.livelloUser = await getLivelloUserByCodiceFiscale(req.session.codiceFiscale);
           if(!req.session.livelloUser){req.session.livelloUser=0};
           console.log("TTTTTTTTTTTTTTTTTTTTTt dentro loginController, livello:", req.session.livelloUser);

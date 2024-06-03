@@ -4,11 +4,11 @@ require('dotenv').config({path:'../.env'});
 const express = require('express');
 const router = express.Router();
 const { userAuth } = require('../middleware/userAuth');
-const UserModel = require('../model/userModel');
+const UserDao = require('../dao/userDao');
 const axios = require('axios');
 const base64 = require('base-64');
 
-const userModel = new UserModel();
+const userDao = new UserDao();
 
 
 /* GET home page. */
@@ -16,7 +16,7 @@ router.get('/dashboard', userAuth,async function(req, res, next) {
   
   const apiUserURL=process.env.HOST_SERVER_API
   //const usersInOrder=await getAllUsersInOrdineCognome()
-  const usersInOrder=await userModel.getAllUsersInOrdineCognome()
+  const usersInOrder=await userDao.getAllUsersInOrdineCognome()
   //console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa",req.session)
   
   // Passa i dati al template EJS

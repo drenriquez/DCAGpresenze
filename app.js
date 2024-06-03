@@ -42,7 +42,7 @@ app.use(cors({
 }));
 
 const userController = new UserController();
-app.use('/api', userController.getRouter());
+app.use('/api', userApiAuth,userController.getRouter());
 app.use(helmet());
 app.use(cookieParser());
 
@@ -89,6 +89,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'utils')));
+app.use('/model', express.static(path.join(__dirname, 'model')));
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
 app.use('/utils', express.static(utilsPath, {
   setHeaders: (res, filePath) => {
@@ -97,8 +98,6 @@ app.use('/utils', express.static(utilsPath, {
     }
   }
 }));
-
-
 
 app.use(homeRouter);
 app.use(userApiAuth,usersRouter);

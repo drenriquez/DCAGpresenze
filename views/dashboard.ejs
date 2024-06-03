@@ -150,7 +150,7 @@
 <body>
   <main>
   <!-- Include la tollbar -->
-  <%- include('toolbar') %>
+  <%- include('toolbar', { livelloUser: livelloUser }) %>
   <!-- Content -->
   <div class="container inside-mt-3">
     <h2 class="text-center">PRESENZE</h2>
@@ -193,7 +193,7 @@
   <%- include('footer') %>
   <!-- Bootstrap Bundle with Popper -->
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script  type="module" src="/js/monthScroll.js" 
+  <script  type="module" src="/js/dashboard.js" 
     usersTable="<%= JSON.stringify(usersTable) %>"
     userCodFisc="<%= userCodFisc %>"
     livelloUser="<%= livelloUser %>"

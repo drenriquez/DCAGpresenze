@@ -1,8 +1,8 @@
 import { isNonLavorativo } from "../../utils/giorniNonLavorativi.js";
 import { getDayAbbreviation } from "../../utils/dayOfWeak.js";
 import { listaGiustificativi } from "../../utils/giustificativiAssenze.js";
-import { APIgetAllUsersInOrdineCognome } from "../../utils/apiUtils.js";
-
+import { APIgetAllUsersInOrdineCognome, APIaddAbsenceById, APIdeleteAbsenceById } from "../../utils/apiUtils.js";
+import { UserModel } from "../../model/userModel.js";
 document.addEventListener('DOMContentLoaded', async function() {
   
   document.getElementById('previousMonth').addEventListener('click', previousMonth);
@@ -18,11 +18,13 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 async function updateTableHeaders() {
   const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
-  const usersTable=await APIgetAllUsersInOrdineCognome(hostApi)
+  const usersTable=await APIgetAllUsersInOrdineCognome(hostApi);
   //const usersTable = JSON.parse(usersTableString);
   const userCodiceFiscale=document.querySelector('script[type="module"]').getAttribute('userCodFisc');
   const livelloUser=document.querySelector('script[type="module"]').getAttribute('livelloUser');
   const tableHeader = document.getElementById('tableHeader');
+  let navbar=document.getElementsByTagName('nav');
+  console.log('--------------------',navbar)
  // const rowsHeader = document.getElementById("rowsHeader");
   const tableBody = document.getElementById("tableBody");
   if (!tableHeader) return;
@@ -43,10 +45,12 @@ async function updateTableHeaders() {
     }
         
   // Crea le righe per ogni dipendente
-  usersTable.forEach((persona, index) => {
-      const cognomeNome = `${persona.anagrafica.cognome} ${persona.anagrafica.nome}`;
-      let classUserLog=persona.anagrafica.codiceFiscale.toUpperCase()===userCodiceFiscale.toUpperCase()? "utenteLoggato": "nonLoggato";
-      let classUserLogNotWork=persona.anagrafica.codiceFiscale.toUpperCase()===userCodiceFiscale.toUpperCase()? "utenteLoggatoNonLavorativo": "nonLoggato";
+  usersTable.forEach((dipendente, index) => {
+      let persona= new UserModel(dipendente)
+      let isUserLogged = persona.getCodiceFiscale()===userCodiceFiscale? true:false;
+      const cognomeNome = persona.getFullName();
+      let classUserLog=persona.getCodiceFiscale().toUpperCase()===userCodiceFiscale.toUpperCase()? "utenteLoggato": "nonLoggato";
+      let classUserLogNotWork=persona.getCodiceFiscale().toUpperCase()===userCodiceFiscale.toUpperCase()? "utenteLoggatoNonLavorativo": "nonLoggato";
  // for(const[index,headRow ]of headRows.entries()){//entries()  restituisce un nuovo oggetto iterabile, coppie chiave-valore per ogni elemento 
       let newTr=document.createElement("tr");
       newTr.textContent = cognomeNome.toUpperCase() ;
@@ -70,10 +74,10 @@ async function updateTableHeaders() {
             </td>`;
           }
           else{
-           
-            
 
-            let result =controlDayForUser(dayOfWeek2,persona.assenze);
+            let result =controlDayForUser(listaGiustificativi,isUserLogged,livelloUser,dayOfWeek2,persona.getAssenze());
+           // if(isUserLogged){console.log("++++++++++++++++++++++++++++++++",result)}
+            //console.log("++++++++++++++++++++++++++++++++",result)
             classOfDay="selezionabile "
             let newTd=document.createElement("td");
             newTd.textContent=result
@@ -89,13 +93,13 @@ async function updateTableHeaders() {
               // const dataYear = selectedDate.getFullYear();
           
               //console.log("+++++++++++ DAY ",dataDay)
-              const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona._id,dayOfWeek2);
+              const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona.getId(),dayOfWeek2);
               select_Element.classList.add(classUserLog)
               newTd.appendChild(select_Element);
             }
             else{
-              if((dayOfWeek2>=(new Date())||isCurrentDay(dayOfWeek2))&&(persona.anagrafica.codiceFiscale.toUpperCase()===userCodiceFiscale.toUpperCase())){
-                const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona._id,dayOfWeek2);
+              if((dayOfWeek2>=(new Date())||isCurrentDay(dayOfWeek2))&&(persona.getCodiceFiscale().toUpperCase()===userCodiceFiscale.toUpperCase())){
+                const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona.getId(),dayOfWeek2);
                 select_Element.classList.add(classUserLog)
                 newTd.appendChild(select_Element);
               }
@@ -111,7 +115,7 @@ async function updateTableHeaders() {
   const selectElements = document.querySelectorAll('.select-option');
     selectElements.forEach(selectElement => {
         selectElement.addEventListener('change', function() {
-            console.log(this.dataset.user)
+            //console.log(this.dataset.user)
             updateCellValue(this,this.classList,this.dataset.user,this.dataset.day);
         });
     });
@@ -123,11 +127,23 @@ function updateCellValue(selectElement,classOfDay,userId,day) {
   const actualValue = selectedOption.getAttribute('data-value');
   const cell = selectElement.parentNode;
   cell.textContent = actualValue;
+  //console.log("actualvalue -->",actualValue)
+  const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
+
+  //console.log(`actualValue (type: ${typeof actualValue}):`, actualValue);
+
+if (actualValue.trim() === "") { //trim() rimuove eventuali spazi bianchi
+  //console.log("actualvalue is empty");
+  APIdeleteAbsenceById(hostApi,userId,day)//.then((res)=>{console.log(res)})
+} else {
+  //console.log("actualvalue is not empty:", actualValue);
+  APIaddAbsenceById(hostApi, userId, day, actualValue)//.then((res)=>{console.log(res)});
+}
   const selectElementNew = createSelectElement(listaGiustificativi,classOfDay,userId,day);
   cell.appendChild(selectElementNew);
-  console.log("***********************",actualValue)
+  //console.log("***********************",actualValue)
   selectElementNew.addEventListener('change', function() {
-    console.log("***********************",actualValue)
+    //console.log("***********************",actualValue)
       updateCellValue(this,classOfDay,userId,day);
   });
 }
@@ -195,7 +211,7 @@ function createSelectElement(listaGiustif, classOfDay, idUser, day) {
   });
   return select;
 }
-function controlDayForUser(day, assenze) {
+function controlDayForUser(listaGiustificativi,isUserLogged,level,day, assenze) {
   let result = "";
   let dayDate = new Date(day);
   let year = dayDate.getFullYear();
@@ -204,5 +220,11 @@ function controlDayForUser(day, assenze) {
   if (assenze[year] && assenze[year][month] && assenze[year][month][date]) {
       result = assenze[year][month][date];
   } 
-  return result;
+  if(isUserLogged||level>0 || result===""){
+    return result
+  }
+  else {
+    return listaGiustificativi[result][1]
+    
+  }
 }

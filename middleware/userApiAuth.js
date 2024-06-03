@@ -25,7 +25,7 @@ function getSessionId(rawHeaders) {
 }
 async function userApiAuth (req, res, next) {
     try {
-        console.log('--------  API auth middleware --------');
+        //console.log('--------  API auth middleware --------');
         
         // Verifica se la richiesta è per la pagina di login e non eseguire la verifica della sessione in quel caso
         if (req.path === '/login') {
@@ -37,7 +37,7 @@ async function userApiAuth (req, res, next) {
 
         if (!isSessionOk) {
             // Se la sessione non è valida e la richiesta non è per la pagina di login, reindirizza alla pagina di login
-            console.log("----------------Sessione non Trovata (middlware userApiAuth) --------------");
+            console.log("----------------Sessione non Trovata (middlware userApiAuth) NON AUTORIZZATO --------------");
             return res.redirect('/login');
         }
 
