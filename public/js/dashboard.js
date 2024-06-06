@@ -99,7 +99,7 @@ async function updateTableHeaders(tabella) {
               // const dataMonth = selectedDate.getMonth();
               // const dataYear = selectedDate.getFullYear();
           
-              //console.log("+++++++++++ DAY ",dataDay)
+              console.log("+++++++++++ livello ",livelloUser)
               const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona.getId(),dayOfWeek2);
               select_Element.classList.add(classUserLog)
               newTd.appendChild(select_Element);
@@ -273,7 +273,6 @@ async function callbackSelectUfficio(valore){
     console.log('333333333333333333333333',valore)
     APIgetUsersByUfficio(hostApi,valore).then((res)=>{ updateTableHeaders(res)})
   }
- 
 }
 // Funzione per ripristinare il valore predefinito del select
 function ripristinaValoreDefaultSelect() {

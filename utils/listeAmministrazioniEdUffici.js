@@ -8,11 +8,17 @@ export const listeUfficiEdAmm={
     "Ufficio II - Concorsi d'Accesso",
     "Ufficio II - Concorsi di Riqualificazione",				
     "Ufficio II - Affari Concorsuali e Contenzioso",								
-    "Ufficio III - Affari Legali e Contenzioso"
+    "Ufficio III - Affari Legali e Contenzioso",
+    "UFFICIO PER I SERVIZI INFORMATICI"
     ],
 'amministrazioni' : [
     "AC", 
     "CNVVF",
      "ESTERNO"
+    ],
+    'livelliUser':[
+        0,
+        1,
+        2
     ]
 }

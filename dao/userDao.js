@@ -50,7 +50,7 @@ class UserDao {
     async createUser(userData) {
         try {
             const result = await this.usersCollection.insertOne(userData);
-            return result.ops[0];
+            return result;
         } catch (error) {
             console.error("Error creating user:", error);
             throw error;
@@ -74,7 +74,8 @@ class UserDao {
     async deleteUser(userId) {
         try {
             const result = await this.usersCollection.findOneAndDelete({ _id: new ObjectId(userId) });
-            return result.value;
+            //console.log("/////////////// inUserDao 77",result)
+            return result;
         } catch (error) {
             console.error("Error deleting user:", error);
             throw error;

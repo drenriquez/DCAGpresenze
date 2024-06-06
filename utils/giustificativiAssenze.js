@@ -1,6 +1,6 @@
 export const listaGiustificativi = {
     " ": ["Annulla Assenza ",""],
-    "A": ["Aspettativa per Motivi Personali - art. 22 comma 1 DPR 7/2008 e smi.","A"],
+    "Ap": ["Aspettativa per Motivi Personali - art. 22 comma 1 DPR 7/2008 e smi.","A"],
     "BO": ["Banca Ore","A"],
     "MAT": ["Congedo Maternità","A"],
     "CO": ["Congedo Ordinario","A"],
@@ -15,7 +15,7 @@ export const listaGiustificativi = {
     "MI": ["Malattia per Infortunio sul Lavoro","A"],
     "MR": ["Malattia per Ricovero Ospedaliero","A"],
     "MV": ["Malattia per Visita","A"],
-    "PT": ["Part Time","PT"],
+    "PT": ["Part Time","A"],
     "P937": ["Permesso L. 937/77 (EX FF.SS.)","A"],
     "PM": ["Permesso Visita Medica - art. 35 - 18 ore annue","A"],
     "PTT": ["Permesso per Testimonianza per Fatti Inerenti al Servizio","A"],

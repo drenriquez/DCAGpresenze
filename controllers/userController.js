@@ -16,9 +16,9 @@ class UserController {
         this.router.get('/users', this.getAllUsers);
         this.router.get('/users/ordinaCognome', this.getAllUsersInOrdineCognome);
         this.router.get('/users/:id', this.getUserById);
-        this.router.post('/users', this.createUser);
+        this.router.post('/createUsers', this.createUser);
         this.router.put('/users/:id', this.updateUser);
-        this.router.delete('/users/:id', this.deleteUser);
+        this.router.delete('/users/deleteUserById', this.deleteUser);
         this.router.get('/users/codiceFiscale/:codiceFiscale', this.getUserByCodiceFiscale);
         this.router.get('/users/ufficio/:ufficio', this.getUsersByUfficio);
         this.router.get('/users/livelloUser/:codiceFiscale', this.getLivelloUserByCodiceFiscale);
@@ -62,6 +62,7 @@ class UserController {
 
     async createUser(req, res) {
         try {
+            console.log("---------TEst userController riga65",req.body)
             const user = await userDao.createUser(req.body);
             res.status(201).json(user);
         } catch (error) {
@@ -83,7 +84,9 @@ class UserController {
 
     async deleteUser(req, res) {
         try {
-            const user = await userDao.deleteUser(req.params.id);
+            const { id } = req.body;
+            const user = await userDao.deleteUser(id);
+           // console.log('*********** chiamato metodo deleteUser in UserController',user)
             if (!user) {
                 return res.status(404).json({ error: 'User not found' });
             }
