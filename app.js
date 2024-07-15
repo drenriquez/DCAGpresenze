@@ -30,6 +30,7 @@ const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const dashboardRouter = require('./routes/dashboard');
 const adminRouter =require('./routes/admin');
+const personaleRouter =require('./routes/personale');
 const UserController = require('./controllers/userController');
 const app = express();
 const utilsPath = path.join(__dirname, 'utils');
@@ -107,6 +108,7 @@ app.use(loginRouter);
 app.use(logoutRouter);
 app.use(dashboardRouter);
 app.use(adminRouter);
+app.use(personaleRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

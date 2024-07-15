@@ -4,7 +4,7 @@ import { UserModel } from "../../model/userModel.js";
 
 let livelloUser='0';
 document.addEventListener('DOMContentLoaded', async function() {
-    
+    popolaSelect("selectUfficio2",listeUfficiEdAmm.uffici,callbackSelect);
     popolaSelect("selectUfficio",listeUfficiEdAmm.uffici,callbackSelect);
     popolaSelect("selectAmministrazione",listeUfficiEdAmm.amministrazioni,callbackSelect);
     popolaSelect("selectLivello",listeUfficiEdAmm.livelliUser,callbackSelectlivello);

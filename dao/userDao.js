@@ -93,7 +93,7 @@ class UserDao {
 
     async getUsersByUfficio(ufficio) {
         try {
-            return await this.usersCollection.find({ ufficio: ufficio }).toArray();
+            return await this.usersCollection.find({ ufficio: ufficio }).sort({ 'anagrafica.cognome': 1 }).toArray();
         } catch (error) {
             console.error("Error fetching users by ufficio:", error);
             throw error;
