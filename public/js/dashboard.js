@@ -270,7 +270,7 @@ async function callbackSelectUfficio(valore){
   }
   else{
     const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
-    console.log('333333333333333333333333',valore)
+    //console.log('333333333333333333333333',valore)
     APIgetUsersByUfficio(hostApi,valore).then((res)=>{ updateTableHeaders(res)})
   }
 }

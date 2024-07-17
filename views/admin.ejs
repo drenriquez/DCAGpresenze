@@ -25,17 +25,17 @@
                 <h2 class="mt-5 mb-4 bold">Esporta Dati Assenze</h2>
               <form id="userForm">
                   <div class="form-group row">
-                      <label for="start" class="col-sm-4 col-form-label bold">Da Giorno:</label>
+                      <label for="startDay" class="col-sm-4 col-form-label bold">del Giorno:</label>
                       <div class="col-sm-8">
-                      <input type="date" id="start" name="start" min="2024-03" value="2024-07" />
+                      <input type="date" id="startDay" name="start" min="2024-01-01" value="" />
                       </div>   
                   </div>
-                  <div class="form-group row">
-                    <label for="end" class="col-sm-4 col-form-label bold">A Giorno:</label>
+                  <!-- <div class="form-group row">
+                    <label for="endDay" class="col-sm-4 col-form-label bold">A Giorno:</label>
                     <div class="col-sm-8">
-                    <input type="date" id="end" name="end" min="2024-03" value="2024-07" />
+                    <input type="date" id="endDay" name="endDay" min="2024-01-01" value="" />
                     </div>   
-                </div>
+                </div> -->
                   <div class="form-group row mt-3">
                       <label for="selectUfficio2" class="col-sm-4 col-form-label bold">Ufficio:</label>
                       <div class="col-sm-8">
@@ -44,7 +44,8 @@
                   </div>
                   <div class="form-group row mt-3">
                       <div class="col-sm-12 d-flex justify-content-start">
-                          <button type="button" class="btn btn-primary bold me-2" id="esportaDati">Esporta Dati</button>
+                          <button type="button" class="btn btn-primary bold me-2" id="esportaDati"  style="background-color: #288468; border-color: #288468 ;">Esporta Dati XLSX</button>
+                          <button type="button" class="btn btn-primary bold me-2" id="esportaDatiPDF"  style="background-color: #ce3328; border-color: #ce3328;">Esporta Dati PDF</button>
                       </div>
                   </div>
               </form>
@@ -113,5 +114,7 @@
     <%- include('footer') %>
     <script type="module" src="/js/admin.js" apiUserURL="<%= apiUserURL %>"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/xlsx.full.min.js"></script>
+    <script src="/js/jspdf.min.js"></script>
 </body>
 </html>
