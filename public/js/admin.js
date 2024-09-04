@@ -3,6 +3,7 @@ import { APIcreateUser, APIupdateUser, APIdeleteUser, APIgetUserByCodiceFiscale 
 import { UserModel } from "../../model/userModel.js";
 import { listaGiustificativi } from "../../utils/giustificativiAssenze.js";
 import { imgData } from '../../utils/imgData.js'; // Importa la stringa base64
+import { ricercaPerCognome, ricercaPerUsername } from '../../utils/serviziWauc.js';
 
 
 let livelloUser='0';
@@ -113,7 +114,6 @@ async function callbackSelectlivello(valore){
 async function addNewUser(){
     const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
     document.getElementById('aggiungiUtente').addEventListener('click', async function() {
-        
         const nome =await document.getElementById('nome').value;
         const cognome =await document.getElementById('cognome').value;
         const codiceFiscale =await document.getElementById('codiceFiscale').value;
@@ -121,31 +121,39 @@ async function addNewUser(){
         const qualifica  =await document.getElementById('qualifica').value;
         const ufficio  =await document.getElementById('selectUfficio').value;
         const livello  =await document.getElementById('selectLivello').value;
-        console.log(nome,cognome,codiceFiscale,amministrazione,qualifica,ufficio,livello)
-            let newUser= new UserModel({});
-            newUser.setAnagrafica({
+
+        if(confirm(`inserimento utente ${cognome} ${nome}`)){
+            
+            //console.log(nome,cognome,codiceFiscale,amministrazione,qualifica,ufficio,livello)
+                let newUser= new UserModel({});
+                newUser.setAnagrafica({
+                    "nome":nome,
+                    "cognome":cognome,
+                    "codiceFiscale":codiceFiscale
+                })
+                newUser.setAmministrazione(amministrazione);
+                newUser.setQualifica(qualifica);
+                newUser.setUfficio(ufficio);
+                newUser.setLivelloUser(livello);
+                newUser.setAssenze({})
+                console.log(newUser.anagrafica)
+             
+           
+            if(livelloUser==='1'||livelloUser==='2'){
+                confirm(`SI STA PER INSERIRE UN UTENTE CON AUTORIZZAZIONI DA AMMINISTRATORE DI LIVELLO: ${livelloUser} `)
+            }
+            let anagrafica={
                 "nome":nome,
                 "cognome":cognome,
                 "codiceFiscale":codiceFiscale
-            })
-            newUser.setAmministrazione(amministrazione);
-            newUser.setQualifica(qualifica);
-            newUser.setUfficio(ufficio);
-            newUser.setLivelloUser(livello);
-            newUser.setAssenze({})
-            console.log(newUser.anagrafica)
+            }
+            let respCreateUser= await APIcreateUser(hostApi,newUser)
+            alert("utente inserito correttamente") 
+        }
+        else{
+            alert("Operazione di inserimento annullata.");
+        }
          
-       
-        if(livelloUser==='1'||livelloUser==='2'){
-            confirm(`SI STA PER INSERIRE UN UTENTE CON AUTORIZZAZIONI DA AMMINISTRATORE DI LIVELLO: ${livelloUser} `)
-        }
-        let anagrafica={
-            "nome":nome,
-            "cognome":cognome,
-            "codiceFiscale":codiceFiscale
-        }
-        let respCreateUser= await APIcreateUser(hostApi,newUser)
-        alert("utente inserito correttamente")   
     }
 
 )}
@@ -286,7 +294,8 @@ async function createFile(){
 
             // Salvare il file PDF
             doc.save(`ASSENZE_DEL_${starDay.value}_${nameOffice}.pdf`);
-            console.log(imgData)
+            let prova= await ricercaPerCognome('Notaro')
+            console.log(prova)
         }
        
         

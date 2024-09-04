@@ -10,15 +10,7 @@
   "amministrazione": "AC",
   "qualifica": "AI",
   "ufficio": "Ufficio II - Concorsi d'Accesso",
-  "assenze": {
-    "2024": {
-      "06": {
-        "17": "Ap",
-        "18": "MI"
-      },
-      "07": {}
-    }
-  },
+  "assenze": {},
   "livelloUser": "2"
 },
 {
@@ -34,11 +26,7 @@
   "qualifica": "O.E.",
   "ufficio": "Ufficio II - Concorsi d'Accesso",
   "livelloUser": "2",
-  "assenze": {
-    "2024": {
-      "06": {}
-    }
-  }
+  "assenze": {}
 },
 {
   "_id": {
@@ -308,11 +296,7 @@
   "qualifica": "ISPETTORE LOGISTICO-GESTIONALE",
   "ufficio": "Ufficio II - Affari Concorsuali e Contenzioso",
   "livelloUser": "0",
-  "assenze": {
-    "2024": {
-      "07": {}
-    }
-  }
+  "assenze": {}
 },
 {
   "_id": {
@@ -357,13 +341,7 @@
   "qualifica": "FUNZIONARIO AMMINISTRATIVO",
   "ufficio": "Ufficio II - Affari Concorsuali e Contenzioso",
   "livelloUser": "0",
-  "assenze": {
-    "2024": {
-      "06": {
-        "17": "MAT"
-      }
-    }
-  }
+  "assenze": {}
 },
 {
   "_id": {

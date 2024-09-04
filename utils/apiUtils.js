@@ -177,6 +177,33 @@ const APIgetUserByCodiceFiscale = async (host, codiceFiscale) => {
         throw error;
     }
 };
+// Nuova API per ottenere il riepilogo delle assenze per codice fiscale
+const APIgetAbsencesSummaryByCodiceFiscale = async (host, codiceFiscale, startDate, endDate) => {
+    try {
+        // Costruzione dell'URL con i parametri di query per startDate ed endDate
+        const url = new URL(`${host}api/users/absencesSummary/${codiceFiscale}`);
+        if (startDate) url.searchParams.append('startDate', startDate);
+        if (endDate) url.searchParams.append('endDate', endDate);
+
+        const response = await fetch(url.toString(), {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin'
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const summary = await response.json();
+        return summary;
+    } catch (error) {
+        console.error('Error fetching absences summary:', error);
+        throw error;
+    }
+};
 export {
   APIgetAllUsersInOrdineCognome,
   APIaddAbsenceById,
@@ -185,5 +212,6 @@ export {
   APIcreateUser,
   APIdeleteUser,
   APIupdateUser,
-  APIgetUserByCodiceFiscale
+  APIgetUserByCodiceFiscale,
+  APIgetAbsencesSummaryByCodiceFiscale
 };

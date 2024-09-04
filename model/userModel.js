@@ -95,7 +95,7 @@ class UserModel {
 
     // Utility methods
     getFullName() {
-        return `${this.anagrafica.nome} ${this.anagrafica.cognome}`;
+        return `${this.anagrafica.cognome} ${this.anagrafica.nome}`;
     }
 
     addAbsence(date, motivo) {

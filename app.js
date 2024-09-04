@@ -31,6 +31,7 @@ const logoutRouter = require('./routes/logout');
 const dashboardRouter = require('./routes/dashboard');
 const adminRouter =require('./routes/admin');
 const personaleRouter =require('./routes/personale');
+const cercaRouter =require('./routes/cerca');
 const UserController = require('./controllers/userController');
 const app = express();
 const utilsPath = path.join(__dirname, 'utils');
@@ -44,7 +45,8 @@ app.use(cors({
 }));
 
 const userController = new UserController();
-app.use('/api', userApiAuth,userController.getRouter());
+//app.use('/api', userApiAuth,userController.getRouter());
+app.use('/api',userController.getRouter());
 app.use(helmet());
 app.use(cookieParser());
 
@@ -53,7 +55,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: { 
-    maxAge: 3600000,
+    maxAge: 1000 * 60 * 60 * 24 * 365 * 10, // 10 years in milliseconds
     httpOnly: true,
     secure: false,
     sameSite: 'Lax'
@@ -103,12 +105,14 @@ app.use('/utils', express.static(utilsPath, {
 }));
 
 app.use(homeRouter);
-app.use(userApiAuth,usersRouter);
+//app.use(userApiAuth,usersRouter);
+app.use(usersRouter);
 app.use(loginRouter);
 app.use(logoutRouter);
 app.use(dashboardRouter);
 app.use(adminRouter);
 app.use(personaleRouter);
+app.use(cercaRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));

@@ -25,19 +25,18 @@
     <div class="container mt-5 main">
         <div class="row">
             <div class="col-md-6">
-                <h2 class="mt-5 mb-4 bold">Riepilogo Dati Assenze</h2>
+                <h2 class="mt-5 mb-4 bold">Ricerca Dipendente</h2>
               <form id="userForm">
                 <div class="form-group row">
-                    <% if (livelloUser === "2") { %>
-          
-                        <label for="codiceFiscale" class="col-sm-4 col-form-label bold">Cognome:</label>
+                   
+                        <label for="cognome" class="col-sm-4 col-form-label bold">Cognome:</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="codiceFiscale" name="codiceFiscale" value="<%= userCodFisc %>" required>
+                                <input type="text" class="form-control" id="cognome" name="cognome" value="" required>
                             </div>
                       
-                    <% } %>
+                   
                 </div>
-                  <div class="form-group row">
+                  <!-- <div class="form-group row">
                       <label for="startDay" class="col-sm-4 col-form-label bold">dal Giorno:</label>
                       <div class="col-sm-8">
                       <input type="date" id="startDay" name="start" min="2024-01-01" value="" />
@@ -47,7 +46,7 @@
                     <label for="endDay" class="col-sm-4 col-form-label bold">Al Giorno:</label>
                     <div class="col-sm-8">
                     <input type="date" id="endDay" name="endDay" min="2024-01-01" value="" />
-                    </div>   
+                    </div>    -->
                 </div>
                   <!-- <div class="form-group row mt-3">
                       <label for="selectGiustificativi" class="col-sm-4 col-form-label bold">Giustificativi:</label>
@@ -71,9 +70,12 @@
                 <table id="tabellaRiepilogativa" class="table table-striped">
                     <thead>
                       <tr>
-                        <th scope="col">CODICE</th>
-                        <th scope="col">GIUSTIFICATIVO</th>
-                        <th scope="col">TOTALE</th>
+                        <th scope="col">CODICE FISCALE</th>
+                        <th scope="col">COGNOME</th>
+                        <th scope="col">NOME</th>
+                        <th scope="col">E-MAIL</th>
+                        <th scope="col">QUALIFICA</th>
+                        <th scope="col">SEDE</th>
                         
                       </tr>
                     </thead>

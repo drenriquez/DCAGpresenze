@@ -138,13 +138,18 @@ function updateCellValue(selectElement,classOfDay,userId,day) {
   const hostApi= document.querySelector('script[type="module"]').getAttribute('apiUserURL');
 
   //console.log(`actualValue (type: ${typeof actualValue}):`, actualValue);
-
+  const dateB = new Date(day);
+  const giorno = String(dateB.getDate()).padStart(2, '0');
+  const month = String(dateB.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+  const year = dateB.getFullYear();
+  let formattedDate=`${giorno}/${month}/${year}`
 if (actualValue.trim() === "") { //trim() rimuove eventuali spazi bianchi
   //console.log("actualvalue is empty");
-  APIdeleteAbsenceById(hostApi,userId,day)//.then((res)=>{console.log(res)})
+  APIdeleteAbsenceById(hostApi,userId,day).then((res)=>{alert(`assenza del ${formattedDate}  per ${res.anagrafica.nome} ${res.anagrafica.cognome} cancellata`)})
 } else {
   //console.log("actualvalue is not empty:", actualValue);
-  APIaddAbsenceById(hostApi, userId, day, actualValue)//.then((res)=>{console.log(res)});
+ 
+  APIaddAbsenceById(hostApi, userId, day, actualValue).then((res)=>{alert(`assenza "${listaGiustificativi[actualValue][0]}" del ${formattedDate} inserita per ${res.anagrafica.nome} ${res.anagrafica.cognome}`)});
 }
   const selectElementNew = createSelectElement(listaGiustificativi,classOfDay,userId,day);
   cell.appendChild(selectElementNew);

@@ -27,6 +27,7 @@
     "morgan": "~1.9.1",
     "nodemon": "^3.1.0",
     "rotating-file-stream": "^3.2.1",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "xlsx": "^0.18.5"
   }
 }

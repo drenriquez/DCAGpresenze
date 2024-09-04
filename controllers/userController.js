@@ -27,6 +27,29 @@ class UserController {
         this.router.delete('/users/deleteAbsenceByCodiceFiscale', this.deleteAbsenceByCodiceFiscale);
         this.router.post('/users/addAbsenceById', this.addAbsenceById);
         this.router.post('/users/deleteAbsenceById', this.deleteAbsenceById);
+
+        this.router.get('/dipendenteByCognome/:cognome', this.getDipendenteBycognome);
+        this.router.get('/users/absencesSummary/:codiceFiscale', this.getAbsencesSummaryByCodiceFiscale);
+        this.router.post('/users/uploadAbsencesFromPath', this.uploadAbsencesFromPath.bind(this));
+
+    }
+    async getDipendenteBycognome (req,res){
+        //console.log("+++++++++++++++++servizio wauc username", username);
+    const baseUrl = 'https://wauc.dipvvf.it/api/';
+    const url = `${baseUrl}personale/?cognome=${req.params.cognome}`;
+
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        const data = await response.json();
+        //console.log(data);
+        res.json(data); // Restituisci i dati ricevuti
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+        throw error; // Rilancia l'errore per essere gestito dal chiamante
+    }
     }
 
     async getAllUsers(req, res) {
@@ -177,11 +200,42 @@ class UserController {
             res.status(500).json({ error: error.message });
         }
     }
-  
-  
+    async getAbsencesSummaryByCodiceFiscale(req, res) {
+        try {
+            const { codiceFiscale } = req.params;
+            const { startDate, endDate } = req.query;
+
+            // Chiamata al metodo DAO per ottenere il riepilogo delle assenze
+            const summary = await userDao.getAbsencesSummaryByCodiceFiscale(codiceFiscale, startDate, endDate);
+
+            res.json(summary);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+    // Metodo per caricare le assenze utilizzando un percorso di file
+    ///codiceFiscale	assenza	uteModifica	dataModifica	dataAssenza
+
+    async uploadAbsencesFromPath(req, res) {
+        try {
+            const { filePath } = req.body;
+            console.log("path passato correttamente")
+
+            if (!filePath) {
+                return res.status(400).json({ error: 'Il percorso del file è richiesto.' });
+            }
+
+            await userDao.addAbsencesFromExcel(filePath);
+            res.status(200).json({ message: 'Assenze caricate con successo dal file.' });
+        } catch (error) {
+            console.error('Errore durante il caricamento delle assenze:', error);
+            res.status(500).json({ error: error.message });
+        }
+    }
     getRouter() {
         return this.router;
     }
+    
 }
 
 module.exports = UserController

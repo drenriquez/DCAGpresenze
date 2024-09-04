@@ -1,5 +1,7 @@
+const xlsx = require('xlsx');
 const { MongoClient, ObjectId } = require('mongodb');
 const databaseConfig = require('../config/database');
+
 
 class UserDao {
     constructor() {
@@ -123,7 +125,8 @@ class UserDao {
         try {
             const user = await this.getUserByCodiceFiscale(codiceFiscale);
             if (!user) {
-                throw new Error('User not found');
+                console.log('User not found, codiceFiscale-> ',codiceFiscale,"data->",data,"motivo->",motivo)
+                throw new Error('User not found, in userDao.addAbsenceByCodiceFiscale() ');
             }
 
             const date = new Date(data);
@@ -238,6 +241,162 @@ class UserDao {
             throw error;
         }
     }
+
+
+    async getAbsencesSummaryByCodiceFiscale(codiceFiscale, startDate, endDate) {
+        try {
+            // Converti le date in oggetti Date
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+    
+            // Esegui l'aggregazione
+            const result = await this.usersCollection.aggregate([
+                {
+                    $match: {
+                        "anagrafica.codiceFiscale": codiceFiscale
+                    }
+                },
+                {
+                    $project: {
+                        assenze: {
+                            $filter: {
+                                input: {
+                                    $map: {
+                                        input: { $objectToArray: "$assenze" },
+                                        as: "anno",
+                                        in: {
+                                            year: "$$anno.k",
+                                            months: {
+                                                $map: {
+                                                    input: { $objectToArray: "$$anno.v" },
+                                                    as: "mese",
+                                                    in: {
+                                                        month: "$$mese.k",
+                                                        days: {
+                                                            $filter: {
+                                                                input: { $objectToArray: "$$mese.v" },
+                                                                as: "giorno",
+                                                                cond: {
+                                                                    $and: [
+                                                                        {
+                                                                            $gte: [
+                                                                                {
+                                                                                    $dateFromString: {
+                                                                                        dateString: {
+                                                                                            $concat: [
+                                                                                                "$$anno.k", "-", "$$mese.k", "-", "$$giorno.k"
+                                                                                            ]
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                start
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            $lte: [
+                                                                                {
+                                                                                    $dateFromString: {
+                                                                                        dateString: {
+                                                                                            $concat: [
+                                                                                                "$$anno.k", "-", "$$mese.k", "-", "$$giorno.k"
+                                                                                            ]
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                end
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                as: "assenzeAnno",
+                                cond: { $gt: [{ $size: "$$assenzeAnno.months" }, 0] }
+                            }
+                        }
+                    }
+                },
+                {
+                    $unwind: "$assenze"
+                },
+                {
+                    $unwind: "$assenze.months"
+                },
+                {
+                    $unwind: "$assenze.months.days"
+                },
+                {
+                    $group: {
+                        _id: "$assenze.months.days.v",
+                        count: { $sum: 1 }
+                    }
+                },
+                {
+                    $project: {
+                        codiceGiustificativo: "$_id",
+                        totale: "$count"
+                    }
+                }
+            ]).toArray();
+    
+            return result;
+        } catch (error) {
+            console.error("Error fetching absences summary by codice fiscale:", error);
+            throw error;
+        }
+    };
+    async addAbsencesFromExcel(filePath) {
+        try {
+            const workbook = xlsx.readFile(filePath);
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const data = xlsx.utils.sheet_to_json(sheet);
+            let i=0
+            for (const row of data) {
+                i++
+                const codiceFiscale = row['codiceFiscale'];
+                let motivo = row['assenza'];
+                let dataAssenza = row['dataAssenza'];
+              
+
+                // Converti la data se è in formato Excel (numero)
+                if (typeof dataAssenza === 'number') {
+                    dataAssenza = this.convertExcelDate(dataAssenza);
+                }
+
+                // Assicurati che tutti i campi necessari siano presenti
+                if (!codiceFiscale || !motivo || !dataAssenza) {
+                    console.error(`Dati mancanti nella riga: ${JSON.stringify(row)}`);
+                    continue;
+                }
+
+                // Aggiungi l'assenza per il codice fiscale specificato
+                if(motivo==="RC"){motivo="BO"}
+                if(motivo==="A"){motivo="Ap"}
+
+                await this.addAbsenceByCodiceFiscale(codiceFiscale, dataAssenza, motivo);
+            }
+
+            console.log('Aggiornamento assenze completato.'," righe lette -> ",i);
+        } catch (error) {
+            console.error('Errore durante l\'aggiornamento delle assenze dal file Excel:', error);
+            throw error;
+        }
+    }
+
+       // Metodo per convertire la data Excel in formato leggibile
+       convertExcelDate(excelDate) {
+        const epoch = new Date(1899, 12, 0); // 30 Dicembre 1899 è il giorno 0 in Excel
+        const date = new Date(epoch.getTime() + excelDate * 86400000); // 86400000 = 24*60*60*1000 (ms in un giorno)
+        return date.toISOString().split('T')[0]; // Restituisce la data in formato 'YYYY-MM-DD'
+    }
+    
 }
 
 module.exports = UserDao;
