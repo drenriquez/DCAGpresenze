@@ -5,9 +5,11 @@ export const listaGiustificativi = {
     "MAT": ["Congedo Maternità","A"],
     "CO": ["Congedo Ordinario","A"],
     "DL119": ["Congedo Ordinario per Cure Lavoratori Invalidi - DL 119/2011","A"],
+    "DL105":["Congedo parentale (D.Lgs 30/06/2022 n.105)","A"],
     "CS42": ["Congedo Straordinario per Gravi Motivi EX ART. 42","A"],
     "CS151": ["Congedo Straordinario D.L.VO 151/2001","A"],
     "104": ["L.5 febbraio 1992, n. 104","A"],
+    "LIBS": ["Libretto sanitario","A"],
     "M": ["Malattia","A"],
     "MB": ["Malattia Bambino","A"],
     "MCS": ["Malattia Causa di Servizio","A"],
@@ -27,7 +29,7 @@ export const listaGiustificativi = {
     "PS": ["Permesso Sindacale","A"],
     "SFS": ["Servizio Fuori Sede","SFS"],
     "SW": ["Smart Working","SW"],
-    "TE": ["Terapia","A"],
+    "TE": ["Terapia","A"]
   };
 
               /*  $value1->assenza == "104"    ||

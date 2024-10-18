@@ -24,7 +24,8 @@ async function setStartDayForInput(){
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth() + 1;
     const currentYear = currentDate.getFullYear();
-    const currentDay = currentDate.getDate();
+    let currentDay = currentDate.getDate();
+    currentDay = currentDay < 10 ? '0' + currentDay : currentDay;
     const starDay=document.getElementById("startDay");
     starDay.value=`${currentYear}-${currentMonth.toString().padStart(2, '0')}-${currentDay}`
     // const endDay=document.getElementById("endDay");
@@ -294,8 +295,8 @@ async function createFile(){
 
             // Salvare il file PDF
             doc.save(`ASSENZE_DEL_${starDay.value}_${nameOffice}.pdf`);
-            let prova= await ricercaPerCognome('Notaro')
-            console.log(prova)
+            //let prova= await ricercaPerCognome('Notaro')
+           // console.log(prova)
         }
        
         

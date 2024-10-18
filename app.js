@@ -33,6 +33,7 @@ const adminRouter =require('./routes/admin');
 const personaleRouter =require('./routes/personale');
 const cercaRouter =require('./routes/cerca');
 const UserController = require('./controllers/userController');
+const WaucController = require('./controllers/waucController');
 const app = express();
 const utilsPath = path.join(__dirname, 'utils');
 
@@ -45,8 +46,10 @@ app.use(cors({
 }));
 
 const userController = new UserController();
-//app.use('/api', userApiAuth,userController.getRouter());
-app.use('/api',userController.getRouter());
+const waucController = new WaucController();
+app.use('/api', userApiAuth,userController.getRouter()); // PROTEZIONE API. AL MOMENTO 49 AL POSTO DI 48 PER DEV
+//app.use('/api',userController.getRouter());
+app.use('/api',waucController.getRouter())
 app.use(helmet());
 app.use(cookieParser());
 
@@ -105,7 +108,7 @@ app.use('/utils', express.static(utilsPath, {
 }));
 
 app.use(homeRouter);
-//app.use(userApiAuth,usersRouter);
+app.use(userApiAuth,usersRouter);
 app.use(usersRouter);
 app.use(loginRouter);
 app.use(logoutRouter);
