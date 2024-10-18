@@ -2,7 +2,7 @@
 require('dotenv').config({path:'../.env'});
 const ldap = require('ldapjs');
 
-async function ldapServerAuth(username, password) {
+async function HOLD_ldapServerAuth(username, password) {
   return new Promise((resolve, reject) => {
     const ldap_server = process.env.LDAP_SERVER;
     //console.log("++++++ serverldap ", ldap_server);
@@ -54,6 +54,48 @@ async function ldapServerAuth(username, password) {
           }
         });
       }
+    });
+  });
+}
+async function ldapServerAuth(username, password) {
+  return new Promise((resolve, reject) => {
+    const ldap_server = process.env.LDAP_SERVER;
+    
+    const client = ldap.createClient({
+      url: ldap_server,
+      tlsOptions: {
+        rejectUnauthorized: false,
+      },
+    });
+
+    // Aggiungi un listener per gestire l'errore
+    client.on('error', (err) => {
+      console.error('LDAP connection error:', err);
+      reject(err); // Rigetta la promise in caso di errore di connessione
+    });
+
+    // Formatta l'username
+    username = username + "@dipvvf.it";
+    console.log("Tentativo di autenticazione LDAP con username:", username);
+
+    client.bind(username, password, (err) => {
+      if (err) {
+        console.error('LDAP bind error:', err);
+        client.unbind(); // Chiude la connessione
+        return reject(err); // Rigetta in caso di errore
+      }
+
+      console.log('LDAP bind successful');
+
+      client.unbind((unbindErr) => {
+        if (unbindErr) {
+          console.error('LDAP unbind error:', unbindErr);
+          return reject(unbindErr); // Rigetta se l'unbind fallisce
+        }
+
+        console.log('LDAP connection closed');
+        resolve(true); // Autenticazione avvenuta con successo
+      });
     });
   });
 }

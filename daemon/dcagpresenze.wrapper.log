@@ -1,0 +1,12 @@
+2024-09-04 15:52:54 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\utente\Documents\node\node_windows\node_modules\node-windows\lib\wrapper.js --file C:\Users\utente\Documents\node\DCAGpresenze\startServiceWindows.js --scriptoptions= --log "DCAGpresenze wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2024-09-04 15:52:54 - Started 6856
+2024-09-04 15:53:38 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\utente\Documents\node\node_windows\node_modules\node-windows\lib\wrapper.js --file C:\Users\utente\Documents\node\DCAGpresenze\startServiceWindows.js --scriptoptions= --log "DCAGpresenze wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2024-09-04 15:53:38 - Started 8820
+2024-09-04 15:59:41 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\utente\Documents\node\node_windows\node_modules\node-windows\lib\wrapper.js --file C:\Users\utente\Documents\node\DCAGpresenze\startServiceWindows.js --scriptoptions= --log "DCAGpresenze wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2024-09-04 15:59:42 - Started 5744
+2024-09-04 16:02:28 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\utente\Documents\node\node_windows\node_modules\node-windows\lib\wrapper.js --file C:\Users\utente\Documents\node\DCAGpresenze\startServiceWindows.js --scriptoptions= --log "DCAGpresenze wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2024-09-04 16:02:28 - Started 8440
+2024-09-04 16:02:57 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\utente\Documents\node\node_windows\node_modules\node-windows\lib\wrapper.js --file C:\Users\utente\Documents\node\DCAGpresenze\startServiceWindows.js --scriptoptions= --log "DCAGpresenze wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2024-09-04 16:02:57 - Started 3156
+2024-09-11 17:34:52 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\utente\Documents\node\node_windows\node_modules\node-windows\lib\wrapper.js --file C:\Users\utente\Documents\node\DCAGpresenze\startServiceWindows.js --scriptoptions= --log "DCAGpresenze wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2024-09-11 17:34:52 - Started 3980

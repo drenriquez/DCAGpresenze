@@ -1,0 +1,44 @@
+DCAG License
+
+Copyright © 2024 Enrico Notaro e Fabio Sampaolo. Tutti i diritti riservati.
+
+Il presente software per la registrazione delle presenze (di seguito "Software") è protetto dalla normativa vigente in materia di diritto d'autore e proprietà intellettuale. Il Software è co-proprietà di Enrico Notaro e Fabio Sampaolo, che detengono congiuntamente tutti i diritti relativi alla creazione, modifica, distribuzione e uso del Software, salvo quanto espressamente previsto dalla licenza d'uso riportata di seguito.
+
+Il Software utilizza alcuni moduli open-source di Node.js, che sono distribuiti sotto licenza aperta. L'uso di tali moduli è soggetto ai termini delle rispettive licenze open-source.
+
+Licenza d'uso
+1. Autorizzazione d'Uso
+Il Software è concesso in licenza d'uso esclusivamente al Ministero dell'Interno - Dipartimento dei Vigili del fuoco, del Soccorso pubblico e della Difesa civile per scopi interni. L'utilizzo è consentito per qualsiasi applicazione interna relativa alla gestione delle presenze, nel rispetto delle condizioni qui indicate.
+
+2. Divieto di Uso a Scopo di Lucro
+È espressamente vietato l'uso del Software, del codice sorgente o di sue parti per qualsiasi forma di profitto diretto o indiretto che escluda o eluda la conoscenza degli Autori. Questo include, ma non si limita a:
+
+Vendita o licenza a terzi del Software o sue componenti.
+Incorporazione del codice o delle sue parti in altri progetti a scopo commerciale o di lucro.
+Utilizzo del Software in modo da ottenere profitti passivi (ad esempio, attraverso pubblicità o monetizzazione indiretta).
+3. Revoca della Licenza in Caso di Uso a Scopo di Lucro
+In caso di utilizzo del Software per scopi di lucro, la presente licenza sarà immediatamente revocata, e l'accesso al Software sarà sospeso per il soggetto in violazione. Gli eventuali profitti generati attraverso l'utilizzo del Software a scopo di lucro saranno distribuiti equamente tra Enrico Notaro e Fabio Sampaolo, i quali si riservano il diritto di:
+
+Accettare tali profitti, esclusivamente mediante procedure descritte nel il contratto di lavoro subordinato che è stato stipulato tra il Dipartimento e gli autori, o
+Redistribuire tali somme a loro discrezione.
+Il contratto sottoscritto tra Enrico Notaro, Fabio Sampaolo, e il Dipartimento dei Vigli del Fuoco è di natura lavorativa e prevede che i due autori non possano ricevere compensi supplementari in nessuna forma, salvo quanto previsto da procedure interne e accettate dal Dipartimento. Qualsiasi somma generata da un utilizzo improprio del Software a scopo di lucro sarà soggetta a queste stesse regole e potrebbe richiedere specifiche autorizzazioni.
+
+4. Proprietà Intellettuale
+La proprietà intellettuale del Software rimane in ogni momento di esclusiva titolarità degli autori, Enrico Notaro e Fabio Sampaolo, indipendentemente dal suo utilizzo. Nessun diritto di proprietà è trasferito all'utente finale o al Dipartimento.
+
+5. Limitazioni sull'Utilizzo
+Il Dipartimento non può:
+
+Modificare, decompilare, disassemblare o tentare di derivare il codice sorgente del Software, salvo previa autorizzazione di entrambi gli autori.
+Cedere o sub-licenziare il Software a terzi senza il consenso esplicito di Enrico Notaro e Fabio Sampaolo.
+Sviluppare versioni derivate del Software senza previa autorizzazione.
+6. Durata della Licenza
+La licenza è valida finché il Software viene utilizzato esclusivamente per scopi interni, conformemente alle condizioni sopra indicate. Qualsiasi violazione comporterà l'immediata cessazione della licenza d'uso.
+
+7. IL SOFTWARE VIENE FORNITO "COSÌ COM'È", SENZA ALCUNA GARANZIA DI ALCUN TIPO, ESPRESSA O IMPLICITA, INCLUSE MA NON LIMITATE ALLE GARANZIE DI COMMERCIABILITÀ, IDONEITÀ PER UN PARTICOLARE SCOPO E NON VIOLAZIONE. IN NESSUN CASO GLI AUTORI O I DETENTORI DEL COPYRIGHT SARANNO RESPONSABILI PER QUALSIASI RECLAMO, DANNO O ALTRA RESPONSABILITÀ, SIA IN UN'AZIONE CONTRATTUALE, ILLECITA O ALTRO, DERIVANTE DA, O IN CONNESSIONE CON IL SOFTWARE O L'USO O ALTRE OPERAZIONI NEL SOFTWARE.
+
+Contatti
+Per ulteriori informazioni o richieste di autorizzazione, contattare:
+
+Enrico Notaro: enriconotaro@gmail.com 
+Fabio Sampaolo: fabio.sampaolo@vigilfuoco.it

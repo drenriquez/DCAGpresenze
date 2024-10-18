@@ -1,7 +1,7 @@
 // loginController.js
 require('dotenv').config({path:'../.env'});
 const ldapServerAuth = require('../config/ldapservice');
-const servizioWAUC = require('../config/waucService');
+const { ricercaPerUsername, ricercaPerCognome } = require('../config/waucService');
 const UserDao = require('../dao/userDao');
 // const axios = require('axios');
 // const base64 = require('base-64');
@@ -23,7 +23,7 @@ async function login(req, res, next) {
       //chiamata ala servizio WAUC per recuperare i dati dell'user
       let dataWauc;
       try {
-          dataWauc = await servizioWAUC(username);
+          dataWauc = await ricercaPerUsername(username);
           //console.log("TTTTTTTTTTTTTTTTTTTTTt dentro loginController, username:", dataWauc);
           req.session.name=dataWauc[0].nome;
           req.session.cognome=dataWauc[0].cognome;

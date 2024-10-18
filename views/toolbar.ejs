@@ -1,63 +1,109 @@
 <style>
+  /* Stile generale della navbar */
+  .navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiunge un'ombra per effetto di profondità */
+  }
+
+  /* Logo migliorato */
   .logo {
-    margin-right: 10px;
+    margin-right: 15px;
+    border: 2px solid white; /* Aggiunge un bordo bianco al logo */
+    padding: 2px;
   }
+
+  /* Navbar container */
+  .navbar-light {
+    background-color: #343a40 !important; /* Colore di sfondo grigio scuro per un look più elegante */
+  }
+
+  /* Titolo */
+  .navbar-brand {
+    font-size: 1.5rem; /* Dimensione maggiore per il titolo */
+    font-weight: bold;
+    color: #f8f9fa !important; /* Testo in bianco per contrastare il background scuro */
+  }
+
+  /* Spaziatura degli elementi del menu */
   .navbar-nav {
-    gap: 10px; /* Aggiungi qui lo spazio desiderato tra gli elementi del menu */
+    gap: 15px; /* Maggiore spazio tra gli elementi */
   }
+
+  /* Stile dei link */
   .navbar-nav .nav-link {
-    transition: background-color 0.3s ease; /* Aggiunto un effetto di transizione sul colore di sfondo */
-    font-weight:bold /* Imposta il testo in grassetto */
+    color: #f8f9fa !important; /* Colore del testo */
+    padding: 10px 15px; /* Aumentata la spaziatura interna per una migliore leggibilità */
+    border-radius: 5px; /* Angoli leggermente arrotondati */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transizioni morbide per hover */
+    font-weight: 600; /* Testo semi-grassetto */
   }
+
+  /* Hover sugli elementi del menu */
   .navbar-nav .nav-link:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Cambiato il colore di sfondo al passaggio del mouse */
+    background-color: rgba(255, 255, 255, 0.15); /* Sfondo più delicato al passaggio del mouse */
+    transform: scale(1.05); /* Leggero ingrandimento al passaggio del mouse */
   }
+
+  /* Icone e allineamento */
+  .nav-link i {
+    font-size: 1.2rem; /* Dimensione maggiore per le icone */
+    vertical-align: middle;
+  }
+
+  /* Stile pulsante toggle per dispositivi mobili */
+  .navbar-toggler {
+    border: none;
+  }
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  /* Aggiusta la sezione principale sotto la navbar */
   .main {
-    margin-top: 100px !important;
+    margin-top: 110px;
   }
-  .title{
-    font-weight: bold !important;
+
+  /* Stile del titolo */
+  .title {
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: white !important;
   }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top"> <!-- Cambiato bg-primary in bg-secondary per applicare un colore grigio alla tollbar -->
-    <div class="container">
-      <img src="/images/vvf_logo.png" alt="VVF Logo" width="40" height="40" class="rounded-circle logo mr-2">
-      <a class="navbar-brand text-light title" href="/home">DCAGpresenze</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link text-light" href="/home">
-            <i class="fas fa-home"></i></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" href="/dashboard">Presenze</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" href="/personale">Personale</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" href="/cerca">Cerca</a>
-          </li>
-           <!-- Aggiungi dinamicamente l'elemento li se levelUser è uguale a 2 -->
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
+  <div class="container">
+    <img src="/images/vvf_logo.png" alt="VVF Logo" width="40" height="40" class="rounded-circle logo">
+    <a class="navbar-brand title" href="/home">DCAGpresenze</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/home"><i class="fas fa-home"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/dashboard">Presenze</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/personale">Personale</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/cerca">Cerca</a>
+        </li>
+        <!-- Aggiungi dinamicamente l'elemento li se levelUser è uguale a 2 -->
         <% if (livelloUser === "2") { %>
-          
-            <li class="nav-item">
-              <a class="nav-link text-light" href="/admin">ADMIN</a>
-            </li>
-          
-        <% } %>
-       
           <li class="nav-item">
-            <a class="nav-link text-light" href="/logout">
-              <i class="fas fa-sign-out-alt"></i>
-            </a>
+            <a class="nav-link" href="/admin">ADMIN</a>
           </li>
-        </ul>
-      </div>
+        <% } %>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
   

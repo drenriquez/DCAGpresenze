@@ -1,0 +1,306 @@
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
+C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9
+    return (connectionString.startsWith('mongodb://') ||
+                             ^
+
+TypeError: Cannot read properties of undefined (reading 'startsWith')
+    at connectionStringHasValidScheme (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:9:30)
+    at new ConnectionString (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb-connection-string-url\lib\index.js:85:34)
+    at parseOptions (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\connection_string.js:191:17)
+    at new MongoClient (C:\Users\utente\Documents\node\DCAGpresenze\node_modules\mongodb\lib\mongo_client.js:51:63)
+    at new SessionModel (C:\Users\utente\Documents\node\DCAGpresenze\model\sessionModel.js:6:28)
+    at Object.<anonymous> (C:\Users\utente\Documents\node\DCAGpresenze\middleware\userApiAuth.js:2:21)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+
+Node.js v20.17.0
