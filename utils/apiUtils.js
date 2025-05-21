@@ -225,6 +225,28 @@ const APIwaucCercaPerCognome = async (host, cognome) => {
         throw error;
     }
   };
+  const APIwaucCercaPerCodiceFiscale = async (host, codiceFiscale) => {
+    try {
+        console.log("----test APIwaucCercaPerCodiceFiscale---")
+        const response = await fetch(`${host}api/waucCercaPerCodiceFiscale/${codiceFiscale}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin' // Assicura l'invio dei cookie con la richiesta
+        });
+  
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+  
+        const users = await response.json();
+        return users;
+    } catch (error) {
+        console.error('Error fetching users by ufficio:', error);
+        throw error;
+    }
+  };
 export {
   APIgetAllUsersInOrdineCognome,
   APIaddAbsenceById,
@@ -235,5 +257,6 @@ export {
   APIupdateUser,
   APIgetUserByCodiceFiscale,
   APIgetAbsencesSummaryByCodiceFiscale,
-  APIwaucCercaPerCognome
+  APIwaucCercaPerCognome,
+  APIwaucCercaPerCodiceFiscale
 };

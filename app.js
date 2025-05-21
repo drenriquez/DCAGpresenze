@@ -11,8 +11,10 @@ const { v4: uuidv4 } = require('uuid');
 const { MongoClient } = require('mongodb');
 const databaseConfig = require('./config/database');
 const { userApiAuth }= require('./middleware/userApiAuth');
-
+const favicon = require('serve-favicon');
+const { invioProgrammato } = require('./utils/invioEmail')
 const mongoClient = new MongoClient(databaseConfig.dbURI);
+//const { createFile }=require('./utils/createXslxPdf');
 mongoClient.connect(function(err) {
   if (err) {
     console.error('Error connecting to MongoDB:', err);
@@ -32,6 +34,7 @@ const dashboardRouter = require('./routes/dashboard');
 const adminRouter =require('./routes/admin');
 const personaleRouter =require('./routes/personale');
 const cercaRouter =require('./routes/cerca');
+const tabellaDipendenteRouter =require('./routes/tabellaDipendente');
 const UserController = require('./controllers/userController');
 const WaucController = require('./controllers/waucController');
 const app = express();
@@ -39,6 +42,8 @@ const utilsPath = path.join(__dirname, 'utils');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
 
 app.use(cors({
   origin: 'https://172.16.17.11',
@@ -94,7 +99,9 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'public')));
+console.log("++++++++++++++++++++++++++++++",path.join(__dirname, 'public', 'favicon.ico'))
 app.use(express.static(path.join(__dirname, 'utils')));
 app.use('/model', express.static(path.join(__dirname, 'model')));
 app.use('/utils', express.static(path.join(__dirname, 'model')));
@@ -107,6 +114,8 @@ app.use('/utils', express.static(utilsPath, {
   }
 }));
 
+
+
 app.use(homeRouter);
 app.use(userApiAuth,usersRouter);
 app.use(usersRouter);
@@ -116,6 +125,7 @@ app.use(dashboardRouter);
 app.use(adminRouter);
 app.use(personaleRouter);
 app.use(cercaRouter);
+app.use(tabellaDipendenteRouter);
 
 app.use(function(req, res, next) {
   next(createError(404));
@@ -127,5 +137,17 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
+invioProgrammato()
+//createFile()
+//setTimeout(createFile,5000)
+
+
+
+
+
+
 
 module.exports = app;

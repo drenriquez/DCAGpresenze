@@ -5,6 +5,7 @@ export function isNonLavorativo(date) {
       { giorno: 25, mese: 4 }, // Festa della Liberazione
       { giorno: 1, mese: 5 }, // Festa del Lavoro
       { giorno: 2, mese: 6},  // Festa della Republica
+      { giorno: 29, mese: 6}, //Festa San Pietro e Paolo
       { giorno: 15, mese: 8 }, // Ferragosto
       { giorno: 1, mese: 11 },//tutti i Santi
       { giorno: 8, mese: 12 },//La Madonna

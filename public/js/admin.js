@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 async function setStartDayForInput(){
     const currentDate = new Date();
-    const currentMonth = currentDate.getMonth() + 1;
+    const currentMonth = currentDate.getMonth() + 1 ;
     const currentYear = currentDate.getFullYear();
     let currentDay = currentDate.getDate();
     currentDay = currentDay < 10 ? '0' + currentDay : currentDay;
@@ -256,7 +256,7 @@ async function createFile(){
         })
         console.log(tabellaAssenti)
         if(tabellaAssenti.length === 0){
-            console.log("tabella vuota")
+            console.log("Non sono presenti assenti")
         }
         else{
             console.log("tabella non vuota")
@@ -267,19 +267,32 @@ async function createFile(){
             data.unshift([nameOffice]);
             // Creare un nuovo documento PDF
             var doc = new jsPDF();
+
+            // Definisci i margini in punti, 72punti equivalgono ad un pollice 2.54cm
+            const margineSinistro = 10;
+            const margineDestro = 10;
+            const margineSuperiore = 10;
+            const margineInferiore = 10;
             // Impostazioni di base
            // Inserire l'immagine come intestazione
-            doc.addImage(imgData, 'PNG', 10, 10, 200, 30); // Aggiunge l'immagine al PDF (x, y, width, height)
+            doc.addImage(imgData, 'PNG', 0, margineSuperiore, 200, 40); // Aggiunge l'immagine al PDF (x, y, width, height)
+            // Aggiunge intestazione sotto all'immagine
+            doc.setFont("Times", "italic"); // Imposta il font Helvetica in corsivo
+            doc.setFontSize(12);
+            doc.text("Dipartimento dei Vigili del fuoco, del Soccorso pubblico e della Difesa civile - D.C.R.U. Ufficio Concorsi", margineSinistro + 7, margineSuperiore + 45);
+
+            // Ripristina il testo normale per i dati
+            doc.setFont("Times","normal");
 
             // Impostazioni di base
-            var startY = 60; // Posizione iniziale Y dopo l'immagine
+            var startY = margineSuperiore + 20 + 40; // Posizione iniziale Y dopo l'immagine
             var lineHeight = 10;
 
             
             var pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
             var pageWidth = doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
-            var cellPadding = 5;
-            var startX = cellPadding;
+            var cellPadding = 3;
+            var startX = cellPadding + margineSinistro;
            // var startY = cellPadding;
             var lineHeight = 10;
             var fontSize = 10; // Dimensione del carattere

@@ -24,6 +24,7 @@ class UserDao {
 
     async getAllUsers() {
         try {
+            console.log('++++++ TEST DAO ++++++++++++')
             return await this.usersCollection.find({}).toArray();
         } catch (error) {
             console.error("Error fetching all users:", error);

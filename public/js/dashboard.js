@@ -102,11 +102,12 @@ async function updateTableHeaders(tabella) {
               select_Element.classList.add(classUserLog)
               newTd.appendChild(select_Element);
             }
-            else{
-              if((dayOfWeek2>=(new Date())||isCurrentDay(dayOfWeek2))&&(persona.getCodiceFiscale().toUpperCase()===userCodiceFiscale.toUpperCase())){
+            else{//nella prima righa è inserito l'orario 9:28 entro cui è possibile effettuare un inserimento, costruisce l'oggetto select all'interno della casella se la condizione è verificata
+              if((dayOfWeek2>=(new Date())||(isCurrentDay(dayOfWeek2)&&( new Date().getHours() < 9 || (new Date().getHours() === 9 && new Date().getMinutes() < 28))))&&(persona.getCodiceFiscale().toUpperCase()===userCodiceFiscale.toUpperCase())){
                 const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona.getId(),dayOfWeek2);
                 select_Element.classList.add(classUserLog)
                 newTd.appendChild(select_Element);
+              //console.log("+++++++++++++++++++++++++++++++++ (dayOfWeek2)",dayOfWeek2)
               }
             }
         //    newTd.textContent ="tes
