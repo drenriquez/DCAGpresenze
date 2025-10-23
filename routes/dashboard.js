@@ -24,6 +24,7 @@ router.get('/dashboard', userAuth,async function(req, res, next) {
     usersTable: usersInOrder,
     userCodFisc: req.session.codiceFiscale,
     livelloUser: req.session.livelloUser,
+    ufficioUser:req.session.ufficio,
     apiUserURL: apiUserURL 
   });
 });

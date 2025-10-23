@@ -31,6 +31,7 @@ async function updateTableHeaders(tabella) {
   //const usersTable = JSON.parse(usersTableString);
   const userCodiceFiscale=document.querySelector('script[type="module"]').getAttribute('userCodFisc');
   const livelloUser=document.querySelector('script[type="module"]').getAttribute('livelloUser');
+  const ufficioUser=document.querySelector('script[type="module"]').getAttribute('ufficioUser');
   const tableHeader = document.getElementById('tableHeader');
  // const rowsHeader = document.getElementById("rowsHeader");
   const tableBody = document.getElementById("tableBody");
@@ -53,7 +54,10 @@ async function updateTableHeaders(tabella) {
         
   // Crea le righe per ogni dipendente
   usersTable.forEach((dipendente, index) => {
+    console.log(ufficioUser)
       let persona= new UserModel(dipendente)
+      if(persona.getLivelloUser()==="3"||persona.getLivelloUser()==="4"){ return }
+      if((ufficioUser!=persona.getUfficio()) && (livelloUser==="3")){ return }
       let isUserLogged = persona.getCodiceFiscale()===userCodiceFiscale? true:false;
       const cognomeNome = persona.getFullName();
       let classUserLog=persona.getCodiceFiscale().toUpperCase()===userCodiceFiscale.toUpperCase()? "utenteLoggato": "nonLoggato";
@@ -102,7 +106,10 @@ async function updateTableHeaders(tabella) {
               select_Element.classList.add(classUserLog)
               newTd.appendChild(select_Element);
             }
-            else{//nella prima righa è inserito l'orario 9:28 entro cui è possibile effettuare un inserimento, costruisce l'oggetto select all'interno della casella se la condizione è verificata
+            else if(livelloUser==="3"||livelloUser==="4"){
+              //console.log("********************************-----------------------*********")
+            }
+            else {//nella prima righa è inserito l'orario 9:28 entro cui è possibile effettuare un inserimento, costruisce l'oggetto select all'interno della casella se la condizione è verificata
               if((dayOfWeek2>=(new Date())||(isCurrentDay(dayOfWeek2)&&( new Date().getHours() < 9 || (new Date().getHours() === 9 && new Date().getMinutes() < 28))))&&(persona.getCodiceFiscale().toUpperCase()===userCodiceFiscale.toUpperCase())){
                 const select_Element = createSelectElement(listaGiustificativi, classOfDay,persona.getId(),dayOfWeek2);
                 select_Element.classList.add(classUserLog)
@@ -110,6 +117,7 @@ async function updateTableHeaders(tabella) {
               //console.log("+++++++++++++++++++++++++++++++++ (dayOfWeek2)",dayOfWeek2)
               }
             }
+          
         //    newTd.textContent ="tes
             // newTr.innerHTML += `
             // <td class="${classTr} tdLavorativo"></td>`;

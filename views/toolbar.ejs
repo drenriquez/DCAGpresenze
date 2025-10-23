@@ -97,9 +97,11 @@
         <li class="nav-item">
           <a class="nav-link" href="/dashboard">Presenze</a>
         </li>
+        <% if (livelloUser < "3") { %>
         <li class="nav-item">
           <a class="nav-link" href="/personale">Personale</a>
         </li>
+        <% } %>
         <li class="nav-item">
           <a class="nav-link" href="/cerca">Cerca</a>
         </li>

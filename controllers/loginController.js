@@ -29,6 +29,7 @@ async function login(req, res, next) {
           req.session.cognome=dataWauc[0].cognome;
           req.session.codiceFiscale=dataWauc[0].codiceFiscale;
           req.session.livelloUser = await userDao.getLivelloUserByCodiceFiscale(req.session.codiceFiscale);
+          req.session.ufficio=await userDao.getUfficioByCodiceFiscale(req.session.codiceFiscale);
           //req.session.livelloUser = await getLivelloUserByCodiceFiscale(req.session.codiceFiscale);
           if(!req.session.livelloUser){req.session.livelloUser=0};
           console.log("TTTTTTTTTTTTTTTTTTTTTt dentro loginController, livello:", req.session.livelloUser);

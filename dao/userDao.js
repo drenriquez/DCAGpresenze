@@ -112,6 +112,15 @@ class UserDao {
             throw error;
         }
     }
+    async getUfficioByCodiceFiscale(codiceFiscale) {
+        try {
+            const user = await this.getUserByCodiceFiscale(codiceFiscale);
+            return user ? user.ufficio : null;
+        } catch (error) {
+            console.error("Error fetching livello user by codice fiscale:", error);
+            throw error;
+        }
+    }
 
     async getUsersByUffici(uffici) {
         try {

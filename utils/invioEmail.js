@@ -9,7 +9,7 @@ const { createFileCNVVF }=require('./createXslxPdfCNVVF');
 const { startSession } = require('mongoose');
 
 
-const Password = 'xxxxxxx'
+const Password = 'Riu.concorsi27'
 // Configurazione di Nodemailer
 const transporter = nodemailer.createTransport({
   host: 'smtp-s.vigilfuoco.it',
